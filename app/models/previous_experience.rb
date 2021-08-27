@@ -1,0 +1,2 @@
+class PreviousExperience < ApplicationRecord
+end

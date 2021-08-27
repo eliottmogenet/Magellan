@@ -1,0 +1,2 @@
+class UserCodingPractice < ApplicationRecord
+end
