@@ -1,1 +1,201 @@
 // Specific CSS for your home-page
+html, body {margin: 0; height: 100%}
+
+.row {
+  height: 100vh;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+#reqs_bar {
+  height: 100%;
+  background-color: #090131;
+}
+
+.list {
+
+  justify-content: center;
+  margin-top: 20px;
+}
+
+i {
+  margin-right: 5px;
+}
+
+
+.req_header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.req_box {
+  color: white !important;
+  margin-left: 20px;
+  background-color: #282341;
+  width: 201px;
+  height: 38px;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 38px;
+
+  p {
+    color: white !important;
+    font-size: 11px;
+    margin-left: 20px;
+  }
+}
+
+.req_box1 {
+  color: white !important;
+  margin-left: 20px;
+  width: 201px;
+  height: 38px;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 38px;
+
+  p {
+    color: white !important;
+    font-size: 11px;
+    margin-left: 20px;
+  }
+}
+
+
+button {
+  margin-left: 20px;
+  margin-top: 30px;
+  background-color: #4175FE;
+  width: 201px;
+  height: 50px;
+  border-radius: 10px;
+  color: white;
+  border-width: 0px;
+  font-size: 14px;
+  font-weight: 400;
+
+
+}
+
+.card {
+  width: 228px;
+  height: 90px;
+  border-radius: 5px;
+  background-color: #F0F0F1;
+}
+
+.description {
+  line-height: 3px;
+}
+
+#name {
+ font-weight: 600;
+ font-size: 12px;
+ color: #090131;
+}
+
+#job {
+ font-weight: 400;
+ font-size: 12px;
+ color: #777581;
+}
+
+#location {
+  color: #282341;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.des {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elips img {
+  position: relative;
+  margin-left: -60px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 110px;
+}
+
+.new {
+  background-color: #F0F0F1;
+  text-decoration: none;
+}
+
+.info:hover{
+  background-color: #EDEAFA;
+  text-decoration: none;
+}
+
+.info p:hover {
+    text-decoration: none !important;
+}
+
+.photo {
+  margin-right: 20px;
+  padding-bottom: 10px;
+}
+
+.candidate_nav{
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.nav-link {
+  color: #777581;
+}
+
+.nav-link:hover{
+  color: #090131;
+}
+
+.div-profile {
+  background-color: white;
+  height: 100vh;
+  border-radius: 10px;
+}
+
+.head-candidates {
+    h3 {
+      color: #777581;
+
+    }
+
+    p {
+      color: black;
+
+    }
+}
+
+.actived {
+  background-color: #EDEAFA;
+}
+
+.tab-pane {
+  height: 600px;
+  overflow-y: scroll;
+}
+
+#pills-contact-tab {
+  margin-right: 3px;
+
+}
+
+
