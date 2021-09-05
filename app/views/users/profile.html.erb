@@ -1,0 +1,347 @@
+<div class="propro">
+  <div class="id-info">
+    <div class="profile-info">
+                  <div>
+                    <%= cl_image_tag @user.photo.key, width: 60, height: 60 %>
+                  </div>
+                <div class="info-pro">
+                    <h5><%= @user.first_name + " " + @user.last_name %></h5>
+                    <p><%= @user.job %> </p>
+                    <p id="loc"><%= @user.city + " " %><i class="fab fa-github"></i><%= + " " %><i class="fab fa-linkedin-in"></i></p>
+                </div>
+      </div>
+  </div>
+
+<div class="alert alert-success collapse" role="alert" id="alert-success">
+  <h5><%= @user.first_name + " " + @user.last_name %> is in your pipeline 🎉</h5>
+  <p>Candidate replies in average in XX days. You can follow the conversation in your ATS </p>
+</div>
+
+
+
+  <div class="choices">
+    <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
+      Export to ATS <i class="fas fa-paper-plane"></i>
+    </button1>
+  </div>
+  <div class="profile-nav">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-home" aria-selected="true">Location</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-skills" role="tab" aria-controls="pills-profile" aria-selected="false">Skills</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-expectations" role="tab" aria-controls="pills-contact" aria-selected="false">Expectations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-background" role="tab" aria-controls="pills-contact" aria-selected="false">Background</a>
+    </li>
+  </ul>
+  <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+  </div>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-location" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="loca">
+        <p>Timezone : <%= @user.timezone %></p>
+        <p><b>  XX overlap</b> with your team </p>
+        <div class="team-overlap">
+          <div>
+           🏠
+          </div>
+          <p style="margin-top: 4px; margin-left: 10px;"><b><%= rand(6..9) %></b> hours with HQ </p>
+        </div>
+      </div>
+        <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+      <div class="loca">
+        <h5 style="font-size: 15px">Compensation</h5>
+        <p>💵 Expected : <b> $ <%= @user.expected_wage %> K </b><small>(- <%= rand(1..15)%> % of your global floor)</small></p>
+        <p>📏 Area median : XX </p>
+        <p>🗓 Notice period : XX </p>
+      </div>
+        <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+      <div class="loca">
+        <h5 style="font-size: 15px">Benefits</h5>
+        <p>🚑  XX <small>(average cost $2K month)</small></p>
+        <p>👴 XX </p>
+      <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+      </div>
+      <div class="loca">
+        <h5 style="font-size: 15px">Tech hub</h5>
+
+         <%# @tech.hubs.each do | hub| %>
+            <%# hub.competitors.each do | competitor | %>
+          <div>
+            <%#= cl_image_tag competitor.photo.key, height: 22, width: 22 %>
+          </div>
+           <%#end %>
+         <%#end %>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="pills-skills" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="loca">
+        <h5 style="font-size: 15px; padding-top: 30px">Challenges</h5>
+
+    </div>
+    <div class="loca">
+      <h5 style="font-size: 15px; padding-top: 30px">Soft skills </h5>
+      <p> <i class="fas fa-user-friends"></i>Worked with : xx</p>
+      <p><i class="fas fa-tasks"></i> XX</p>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="pills-expectations" role="tabpanel" aria-labelledby="pills-home-tab">
+    <div class="loca">
+      <h5 style="font-size: 15px; padding-top: 30px">Next technical steps</h5>
+
+      <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+      <p style="color: #777581">Stacks and tools to explore</p>
+    </div>
+    <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+    <div class="loca">
+      <h5 style="font-size: 15px; padding-top: 30px">Next career steps</h5>
+
+    </div>
+  </div>
+    <div class="tab-pane fade" id="pills-background" role="tabpanel" aria-labelledby="pills-home-tab">
+
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="mod-title">
+        <h5 class="modal-title" id="exampleModalLongTitle">Send a message <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
+          <p>Start a conversation in order to add  <%= @user.first_name + " " %>to your ATS</p>
+      <div style="margin-top: 5px">
+      <%= cl_image_tag @users.first.photo.key, height: 35, width: 35, style: "z-index: 1" %>
+      <%= cl_image_tag @user.photo.key, height: 35, width: 35, style: "margin-left: -10px;" %>
+    </div>
+      </div>
+
+      <div class="modal-body">
+        <textarea id="description" placeholder="Type a relevant message to <%= @user.first_name %> "></textarea>
+      <hr>
+        <p>Add internal feedback note in Lever </p>
+        <textarea id="text2" placeholder="Tag @team members and add comments directly in Lever"></textarea>
+
+      <div class="mod-footer">
+      <button1 type="button" class="choice" id='dis' data-dismiss="modal">Cancel </button1>
+
+            <button1 type="button" class="choice" data-dismiss="modal" id="starting">
+              Start conversation <i class="fas fa-paper-plane"></i>
+            </button1>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+
+.alert {
+  text-align: center;
+  margin-right: 450px;
+  margin-bottom: 700px;
+}
+
+.alert p {
+  font-size: 10px;
+}
+
+.mod-footer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.mod-title {
+  text-align: center;
+}
+
+textarea {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 150px;
+  background-color: #F0F0F1;
+}
+
+#text2 {
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 60px;
+  background-color: #F0F0F1;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.modal p {
+  font-size: 10px;
+}
+
+p {
+  color: #090131;
+}
+
+h5 {
+  color: #090131;
+}
+
+
+.job-desc {
+  margin-left: 10px;
+  line-height: 5px;
+}
+
+.former-job {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+.staks {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stack {
+  margin-top: 5px;
+  margin-left: 6px;
+  background-color: #090131;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  p {
+    font-size: 10px;
+    color: white;
+  }
+}
+
+small {
+  color: #777581;
+  font-size: 8px;
+  margin-left: 0px !important;
+}
+
+
+.team-overlap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.loca {
+  margin-left: 15px;
+}
+
+.tab-pane p {
+  font-size: 10px
+}
+
+.tab-pane {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+#pills-location p {
+  line-height: 9px;
+}
+
+
+.profile-nav {
+  font-size: 10px;
+  margin-top: 15px;
+  margin-bottom: 0px ;
+  padding-left: 10px;
+}
+
+#pills-contact-tab {
+  margin-right: 0px;
+}
+
+.choices {
+  padding-left: 25px;
+}
+
+.choice {
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+#dis {
+  background-color: #F0F0F1;
+  color: #090131;
+}
+
+#dis:hover{
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+.info-pro p {
+  font-size: 12px;
+  margin-bottom: 9px !important;
+  color: #777581;
+}
+
+#loc {
+  color: #090131;
+}
+
+.info-pro h5 {
+  font-size: 20px;
+  color: #090131;
+}
+
+.id-info {
+  margin-left: 10px;
+}
+
+.show {
+  display: block i !important;
+}
+
+</style>
+
+<script>
+  const starting = document.getElementById("starting");
+const alert1 = document.getElementById("alert-success");
+  starting.addEventListener("click", (event) => {
+    alert1.classList.toggle("show");
+  });
+
+</script>

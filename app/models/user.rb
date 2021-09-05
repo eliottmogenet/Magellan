@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :photo
+
   #belongs_to :country
 
   #has_many :user_stacks
@@ -18,6 +20,6 @@ class User < ApplicationRecord
   #has_many :user_coding_practices
   #has_many :coding_practices, through: :user_coding_practices
 
-  #has_many :matchings
-  #has_many :reqs, through: :matchings
+  has_many :matchings
+  has_many :reqs, through: :matchings
 end

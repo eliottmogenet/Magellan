@@ -1,0 +1,232 @@
+<body>
+  <div class="row">
+
+
+      <div class="col-2" style="background-color: #090131">
+        <%= render template: "reqs/show" %>
+      </div>
+
+      <div class="col-3" style="background-color: #FFFFFF">
+        <%= render template: "users/home" %>
+      </div>
+
+      <div class="col-7">
+      <div class="row">
+        <div class="col-6 mapp">
+
+        </div>
+        <div class="col-6 profile" style="background-color: #FFFFFF">
+          <%= render template: "users/profile" %>
+        </div>
+      </div>
+
+      </div>
+  </div>
+</body>
+
+
+
+
+<style>
+
+.alert {
+  text-align: center;
+  margin-right: 450px;
+  margin-bottom: 700px;
+}
+
+.alert p {
+  font-size: 10px;
+}
+
+.mod-footer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.mod-title {
+  text-align: center;
+}
+
+textarea {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 150px;
+  background-color: #F0F0F1;
+}
+
+#text2 {
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 60px;
+  background-color: #F0F0F1;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.modal p {
+  font-size: 10px;
+}
+
+p {
+  color: #090131;
+}
+
+h5 {
+  color: #090131;
+}
+
+
+.job-desc {
+  margin-left: 10px;
+  line-height: 5px;
+}
+
+.former-job {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+.staks {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stack {
+  margin-top: 5px;
+  margin-left: 6px;
+  background-color: #090131;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  p {
+    font-size: 10px;
+    color: white;
+  }
+}
+
+small {
+  color: #777581;
+  font-size: 8px;
+  margin-left: 0px !important;
+}
+
+
+.team-overlap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.loca {
+  margin-left: 15px;
+}
+
+.tab-pane p {
+  font-size: 10px
+}
+
+.tab-pane {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+#pills-location p {
+  line-height: 9px;
+}
+
+
+.profile-nav {
+  font-size: 10px;
+  margin-top: 15px;
+  margin-bottom: 0px ;
+  padding-left: 10px;
+}
+
+#pills-contact-tab {
+  margin-right: 0px;
+}
+
+.choices {
+  padding-left: 25px;
+}
+
+.choice {
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+#dis {
+  background-color: #F0F0F1;
+  color: #090131;
+}
+
+#dis:hover{
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+.info-pro p {
+  font-size: 12px;
+  margin-bottom: 9px !important;
+  color: #777581;
+}
+
+#loc {
+  color: #090131;
+}
+
+.info-pro h5 {
+  font-size: 20px;
+  color: #090131;
+}
+
+.id-info {
+  margin-left: 10px;
+}
+
+.show {
+  display: block i !important;
+}
+
+</style>
+
+<script>
+  const starting = document.getElementById("starting");
+const alert1 = document.getElementById("alert-success");
+  starting.addEventListener("click", (event) => {
+    alert1.classList.toggle("show");
+  });
+
+</script>
