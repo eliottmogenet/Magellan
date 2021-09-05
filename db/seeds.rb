@@ -10,11 +10,21 @@ require 'open-uri'
 Req.destroy_all
 User.destroy_all
 Matching.destroy_all
+Customer.destroy_all
 
-req1 = Req.new(title: "Data Engineer ", salary_range: 50)
+customer1 = Customer.new(name: "Nubank" )
+customer1.save
+
+user1 = customer1.users.create(email: "techrecruiter1@gmail.com", password: "techrecruiter1@gmail.com", tech_recruiter: true)
+user1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
+user1.save
+
+req1 = customer1.reqs.create(title: "Data Engineer ", salary_range: 50)
 req1.save
-req2 = Req.new(title: "Ruby Engineer ", salary_range: 60)
+req2 = customer1.reqs.create(title: "Ruby Engineer ", salary_range: 60)
 req2.save
+req3 = Req.new(title: "Node.js Engineer ", salary_range: 60)
+req3.save
 
 candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')

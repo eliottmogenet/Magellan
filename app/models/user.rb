@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   #belongs_to :country
+  belongs_to :customer
 
   #has_many :user_stacks
   #has_many :stacks, through: :user_stacks
