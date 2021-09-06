@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @users = User.all
     @reqs = Req.all
     @req = Req.find(params[:req_id])
-    @users_matched = @req.users
+    #@users_matched = @req.users
     @customer = current_user.customer
   end
 
@@ -16,5 +16,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #@reqs = Req.all
     @customer = current_user.customer
+  end
+
+  def messaged
+    @user = User.find(params[:id])
+    @req = Req.find(params[:req_id])
+    @match = @user.matchings.where(req_id: @req.id)
+    @match.update(status: "messaged")
+      redirect_to req_users_path(@req)
   end
 end

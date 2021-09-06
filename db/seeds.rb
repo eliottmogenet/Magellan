@@ -12,19 +12,28 @@ User.destroy_all
 Matching.destroy_all
 Customer.destroy_all
 
+p "creating customers"
+
 customer1 = Customer.new(name: "Nubank" )
 customer1.save
+
+p "creating users"
+
 
 user1 = customer1.users.create(email: "techrecruiter1@gmail.com", password: "techrecruiter1@gmail.com", tech_recruiter: true)
 user1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
 user1.save
 
+p "creating reqs"
+
 req1 = customer1.reqs.create(title: "Data Engineer ", salary_range: 50)
 req1.save
 req2 = customer1.reqs.create(title: "Ruby Engineer ", salary_range: 60)
 req2.save
-req3 = Req.new(title: "Node.js Engineer ", salary_range: 60)
+req3 = customer1.reqs.create(title: "Node.js Engineer ", salary_range: 60)
 req3.save
+
+p "creating candidates"
 
 candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
@@ -37,6 +46,8 @@ candidate2.save!
 candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
 candidate3.save!
+
+p "creating matchings"
 
 
 matching1 = req1.matchings.create(user_id: candidate1.id)

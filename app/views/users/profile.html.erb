@@ -118,7 +118,7 @@
     <div class="modal-content">
       <div class="mod-title">
         <h5 class="modal-title" id="exampleModalLongTitle">Send a message <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
-          <p>Start a conversation in order to add  <%= @user.first_name + " " %>to your ATS</p>
+          <p>Start a conversation with <%= @user.first_name + " " %>. He will be notified in Magellan. </p>
       <div style="margin-top: 5px">
       <%= cl_image_tag @users.first.photo.key, height: 35, width: 35, style: "z-index: 1" %>
       <%= cl_image_tag @user.photo.key, height: 35, width: 35, style: "margin-left: -10px;" %>
@@ -128,15 +128,14 @@
       <div class="modal-body">
         <textarea id="description" placeholder="Type a relevant message to <%= @user.first_name %> "></textarea>
       <hr>
-        <p>Add internal feedback note in Lever </p>
-        <textarea id="text2" placeholder="Tag @team members and add comments directly in Lever"></textarea>
 
       <div class="mod-footer">
       <button1 type="button" class="choice" id='dis' data-dismiss="modal">Cancel </button1>
-
+        <%= link_to messaged_req_user_path(@req, @user), method: :post do %>
             <button1 type="button" class="choice" data-dismiss="modal" id="starting">
               Start conversation <i class="fas fa-paper-plane"></i>
             </button1>
+        <% end %>
       </div>
       </div>
     </div>

@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   #def skip_pundit?
     #devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   #end
+
+  def after_sign_in_path_for(user)
+    @req = current_user.customer.req_ids.first
+    req_users_path(@req)
+  end
+
 end
