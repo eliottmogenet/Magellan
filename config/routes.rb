@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :users do
       member do
         post 'messaged', to: "users#messaged"
+        post 'archive', to: "users#archive"
       end
     end
   end

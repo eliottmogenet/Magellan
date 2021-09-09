@@ -1,12 +1,28 @@
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('a[data-toggle="pill"]').on('show.bs.tab', function(e) {
+    localStorage.setItem('activeTab', $(e.target).attr('href'));
+  });
+  var activeTab = localStorage.getItem('activeTab');
+  if(activeTab){
+    $('#myTab a[href="' + activeTab + '"]').tab('show');
+  }
+});
+</script>
+
+
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
   <p><b><%= @users.count %></b> profiles this week</p>
 
 </div>
-<div class="candidate_nav">
-  <ul class="nav">
+<div class="class="affectedDiv>
+  <div class="candidate_nav">
+    <ul class="nav" id="myTab">
   <li class="nav-item">
-    <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.count %>)</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.count %>)</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Started</a>
@@ -14,12 +30,13 @@
   <li class="nav-item">
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-archived" role="tab" aria-controls="pills-contact" aria-selected="false">Archived</a>
   </li>
-</ul>
+  </ul>
+  </div>
 </div>
 <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
 
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade show active" id="pills-new" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-home-tab">
 
           <% @req.users.where(:matchings => {:status => nil }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
@@ -37,7 +54,7 @@
               <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
           <% end %>
     </div>
-    <div class="tab-pane fade" id="pills-current" role="tabpanel" aria-labelledby="pills-pro-tab">
+    <div class="tab-pane fade"  id="pills-current" role="tabpanel" aria-labelledby="pills-pro-tab">
 
           <% @req.users.where(:matchings => { :status => "messaged" }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
@@ -74,3 +91,11 @@
           <% end %>
     </div>
     </div>
+
+
+
+
+
+
+
+

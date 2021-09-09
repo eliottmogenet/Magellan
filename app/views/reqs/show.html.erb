@@ -21,13 +21,26 @@
     <%= cl_image_tag("Line_1_nwlm9y",
           width: 200, height: 1, style: 'margin-left: 20px;') %>
         <% @customer.reqs.each do |req| %>
-        <%= link_to req_users_path(req) do %>
+
+      <% if req.users.where(:matchings => {:status => nil }).any? %>
+
+        <%= link_to req_user_path(req, req.users.where(:matchings => {:status => nil }).first) do %>
           <div class="req_box1">
             <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
           </div>
           <% end %>
+
+      <% else %>
+
+          <%= link_to req_users_path(req) do %>
+          <div class="req_box1">
+            <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
+          </div>
+          <% end %>
+
         <% end %>
 
+        <% end %>
       </div>
 
 <style>

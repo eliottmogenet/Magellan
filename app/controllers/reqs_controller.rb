@@ -4,8 +4,8 @@ class ReqsController < ApplicationController
     @reqs = policy_scope(Req)
     @users = User.all
     @req = Req.find(params[:id])
-    @users_matched = @req.users
     @customer = current_user.customer
+    #@candidates = @req.users.where(:matchings => {:status => nil })
   end
 
   def show
