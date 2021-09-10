@@ -14,4 +14,11 @@ class ReqsController < ApplicationController
     @users_matched = @req.users
     @customer = current_user.customer
   end
+
+  def archive
+    @user = User.find(params[:id])
+    @req = Req.find(params[:req_id])
+    @match = @user.matchings.where(req_id: @req.id)
+    @match.update(status: "archived")
+  end
 end

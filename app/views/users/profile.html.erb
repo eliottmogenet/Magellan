@@ -1,5 +1,4 @@
 <div class="propro">
-      <%= render 'shared/navbar' %>
 
   <div class="id-info">
     <div class="profile-info">
@@ -25,7 +24,9 @@
     <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
       Export to ATS <i class="fas fa-paper-plane"></i>
     </button1>
-    <%= link_to archive_req_user_path(@req, @user), method: :post, class: 'choice', id: 'dis' do %> Archive <i class="fas fa-archive"></i><% end %>
+    <%= link_to archive_req_user_path(@req, @user), method: :post, class: 'choice' ,id: 'dis' do %>
+      Archive <i class="fas fa-archive"></i>
+    <% end %>
   </div>
   <div class="profile-nav">
   <ul class="nav">

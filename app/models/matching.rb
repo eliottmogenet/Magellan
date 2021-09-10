@@ -4,6 +4,6 @@ class Matching < ApplicationRecord
 
   belongs_to :user
   belongs_to :req
-  #has_many :experience_comments
+  has_many :experience_comments
 
 end

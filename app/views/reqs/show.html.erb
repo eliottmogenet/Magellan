@@ -1,20 +1,38 @@
 
 
 
-        <div style="head">
-          <%= cl_image_tag("Group_2_vnmtnk", width: 124, height: 45, style: 'margin-top: 26px; margin-left: 20px;') %>
-        </div>
-        <div class="req_header">
-          <button> <%= link_to "+ Open new Req", new_req_path, style: "color: white; text-decoration: none;" %></button>
-        </div>
-              <div>
+        <div class="navbar navbar-expand-sm" style="head">
+          <div class="account1" style="margin-top: 26px; margin-left: 8px;">
+            <div class="logo">
+              <%= cl_image_tag("Rectangle_4_1_ch4agy", width: 47, height: 45) %>
+            </div>
+            <div class="account" style="margin-left: 7px;">
+              <p style="font-size: 14px; color: white; line-height: 1px; margin-top: 10px" class="dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><%= @customer.name %></p>
+              <p style="font-size: 10px; color: white; line-height: 0px"><%= current_user.first_name + " " + current_user.last_name %></p>
+                <ul class="navbar-nav mr-auto">
+                  <% if user_signed_in? %>
+                    <li class="nav-item dropdown">
+                    <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
+                      <%= link_to "Send feedback 💌", "#", class: "dropdown-item" %>
+                        <%= link_to "Change password 🔒", "#", class: "dropdown-item" %>
+                        <%= link_to "Log out 🚪", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+                    </div>
+                    </li>
+                    <% else %>
+                    <li class="nav-item">
+                    <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+                    </li>
+                    <% end %>
+                  </ul>
+
+            </div>
+              </div>
+          </div>
+              <div style="margin-top: 35px;">
         <div class="candidate_nav" style="margin-left: 10px;">
         <ul class="nav">
         <li class="nav-item">
           <a class="nav-link" style="color: white" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">Opened </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Waiting</a>
         </li>
       </ul>
     </div>
@@ -25,18 +43,19 @@
       <% if req.users.where(:matchings => {:status => nil }).any? %>
 
         <%= link_to req_user_path(req, req.users.where(:matchings => {:status => nil }).first) do %>
-          <div class="req_box1">
-            <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
-          </div>
-          <% end %>
+            <div class="req_box1">
+              <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
+            </div>
+        <% end %>
 
       <% else %>
 
-          <%= link_to req_users_path(req) do %>
-          <div class="req_box1">
-            <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
-          </div>
-          <% end %>
+
+        <%= link_to req_users_path(req) do %>
+            <div class="req_box1">
+              <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
+            </div>
+        <% end %>
 
         <% end %>
 
@@ -44,6 +63,38 @@
       </div>
 
 <style>
+
+.dropdown-menu {
+  border-radius: 5px;
+  border-style: 1px;
+}
+
+
+.dropdown-item {
+  font-size: 10px;
+}
+
+.account1 {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.req_box1:hover {
+  text-decoration: none !important;
+  color: white !important;
+  margin-left: 20px;
+  background-color: #282341;
+  width: 201px;
+  height: 38px;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 38px;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
 
 .alert {
   text-align: center;

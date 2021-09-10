@@ -11,6 +11,15 @@ Req.destroy_all
 User.destroy_all
 Matching.destroy_all
 Customer.destroy_all
+Stack.destroy_all
+Employer.destroy_all
+SpeakingLanguage.destroy_all
+CodingPractice.destroy_all
+UserStack.destroy_all
+UserSpeakingLanguage.destroy_all
+UserCodingPractice.destroy_all
+PreviousExperience.destroy_all
+ExperienceComment.destroy_all
 
 p "creating customers"
 
@@ -20,7 +29,7 @@ customer1.save
 p "creating users"
 
 
-user1 = customer1.users.create(email: "techrecruiter1@gmail.com", password: "techrecruiter1@gmail.com", tech_recruiter: true)
+user1 = customer1.users.create(first_name: "Valentin", last_name: "Loye", email: "techrecruiter1@gmail.com", password: "techrecruiter1@gmail.com", tech_recruiter: true)
 user1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
 user1.save
 
@@ -37,26 +46,205 @@ p "creating candidates"
 
 candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
+candidate1.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate1.save!
 
 candidate2 = User.new(first_name: "Roberto", last_name: "De Vez", email: "alison1@datatog.com", password: "seb1@lewagon.org", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
+candidate2.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate2.save!
 
 candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", level: 4, timezone: "BST GMT-3", current_employer: "Facebook" , status: "In Magellan")
 candidate3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
+candidate3.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate3.save!
 
 p "creating matchings"
 
 
-matching1 = req1.matchings.create(user_id: candidate1.id)
+matching1 = req1.matchings.create(user_id: candidate1.id, matching_description: "Anna might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
+difference with your HQ in NYC.")
 matching1.save!
 
-matching2 = req1.matchings.create(user_id: candidate3.id)
+matching2 = req1.matchings.create(user_id: candidate3.id, matching_description: "Roberto might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
+difference with your HQ in NYC.")
 matching2.save!
 
-matching3 = req2.matchings.create(user_id: candidate3.id)
+matching3 = req2.matchings.create(user_id: candidate3.id, matching_description: "Kevin might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
+difference with your HQ in NYC.")
 matching3.save!
+
+p "creating employers"
+
+rappi = Employer.new(name: "Rappi")
+rappi.logo.attach(io: File.open(File.join(Rails.root,'app/assets/images/rappi.png')), filename: 'Rappi.png')
+rappi.save!
+fintual = Employer.new(name: "Fintual")
+fintual.logo.attach(io: File.open(File.join(Rails.root,'app/assets/images/fintual.png')), filename: 'Fintual.png')
+fintual.save!
+
+
+p "creating stacks"
+
+python = Stack.new(name: "Python")
+python.save!
+ruby_rails = Stack.new(name: "Ruby on rails")
+ruby_rails.save!
+node = Stack.new(name: "Node.js")
+node.save!
+react = Stack.new(name: "React.js")
+react.save!
+java = Stack.new(name: "Java")
+java.save!
+laravel = Stack.new(name: "Laravel")
+laravel.save!
+
+p "creating speaking language"
+
+
+english = SpeakingLanguage.new(name: "English 🇺🇸")
+english.save!
+spanish = SpeakingLanguage.new(name: "Spanish")
+spanish.save!
+french = SpeakingLanguage.new(name: "French")
+french.save!
+portuguese = SpeakingLanguage.new(name: "Portuguese")
+portuguese.save!
+
+p "creating coding pratrices"
+
+scrum = CodingPractice.new(name: "Scrum")
+scrum.save!
+tdd = CodingPractice.new(name: "TDD")
+tdd.save!
+code_review = CodingPractice.new(name: "Code review")
+code_review.save!
+
+p "creating countries"
+
+chile = Country.new(name: "Chile 🇨🇱", area_median_wage: "$USD 36.000", notice_period: "2 weeks", healthcare: "Healthcare" )
+chile.save!
+
+#per users
+
+p "creating user stacks - skillsets of candidates"
+
+#candidate1
+user_stack1 = candidate1.user_stacks.create(stack_id: ruby_rails.id, years_xp: 4, able_to_learn: false)
+user_stack1.save
+user_stack2 = candidate1.user_stacks.create(stack_id: python.id, able_to_learn: true)
+user_stack2.save
+user_stack3 = candidate1.user_stacks.create(stack_id: node.id, years_xp: 4, able_to_learn: false)
+user_stack3.save
+user_stack4 = candidate1.user_stacks.create(stack_id: react.id, able_to_learn: true)
+user_stack4.save
+
+#candidate2
+
+user_stack6 = candidate2.user_stacks.create(stack_id: ruby_rails.id, years_xp: 4, able_to_learn: false)
+user_stack6.save
+user_stack7 = candidate2.user_stacks.create(stack_id: python.id, able_to_learn: true)
+user_stack7.save
+user_stack8 = candidate2.user_stacks.create(stack_id: node.id, years_xp: 4, able_to_learn: false)
+user_stack8.save
+user_stack9 = candidate2.user_stacks.create(stack_id: react.id, able_to_learn: true)
+user_stack9.save
+
+#candidate3
+
+user_stack10 = candidate3.user_stacks.create(stack_id: ruby_rails.id, years_xp: 4, able_to_learn: false)
+user_stack10.save
+user_stack11 = candidate3.user_stacks.create(stack_id: python.id, able_to_learn: true)
+user_stack11.save
+user_stack12 = candidate3.user_stacks.create(stack_id: node.id, years_xp: 4, able_to_learn: false)
+user_stack12.save
+user_stack13 = candidate3.user_stacks.create(stack_id: react.id, able_to_learn: true)
+user_stack13.save
+
+
+p "creating user speaking languages"
+
+
+#candidate1
+user_speaking_languages1 = candidate1.user_speaking_languages.create(speaking_language_id: english.id, level: "Intermediate")
+user_speaking_languages1.save
+user_speaking_languages2 = candidate1.user_speaking_languages.create(speaking_language_id: spanish.id, level: "Fluent", country: "Chile 🇨🇱")
+user_speaking_languages2.save
+
+#candidate2
+
+user_speaking_languages3 = candidate2.user_speaking_languages.create(speaking_language_id: english.id, level: "Intermediate")
+user_speaking_languages3.save
+user_speaking_languages4 = candidate2.user_speaking_languages.create(speaking_language_id: spanish.id, level: "Fluent", country: "Chile 🇨🇱")
+user_speaking_languages4.save
+
+#candidate3
+
+user_speaking_languages5 = candidate3.user_speaking_languages.create(speaking_language_id: english.id, level: "Intermediate")
+user_speaking_languages5.save
+user_speaking_languages6 = candidate3.user_speaking_languages.create(speaking_language_id: spanish.id, level: "Fluent", country: "Chile 🇨🇱")
+user_speaking_languages6.save
+
+
+p "creating user coding pratrices"
+
+#candidate1
+user_coding_practices1 = candidate1.user_coding_practices.create(coding_practice_id: scrum.id)
+user_coding_practices1.save
+user_coding_practices2 = candidate1.user_coding_practices.create(coding_practice_id: tdd.id)
+user_coding_practices2.save
+
+#candidate2
+user_coding_practices3 = candidate2.user_coding_practices.create(coding_practice_id: scrum.id)
+user_coding_practices3.save
+user_coding_practices4 = candidate2.user_coding_practices.create(coding_practice_id: tdd.id)
+user_coding_practices4.save
+
+
+#candidate3
+user_coding_practices5 = candidate3.user_coding_practices.create(coding_practice_id: scrum.id)
+user_coding_practices5.save
+user_coding_practices6 = candidate3.user_coding_practices.create(coding_practice_id: tdd.id)
+user_coding_practices6.save
+
+
+p "creating previous experiences per candidates"
+
+#candidate1
+experience1 = candidate1.previous_experiences.create(number: 1, employer_id: rappi.id, description: "At Rappi, he developped a real-time notification system using  websockets for 10K users, in a team of 20 engineers.
+It was a 2 months project in Scrum using Circle CI.")
+experience1.save
+experience2 = candidate1.previous_experiences.create(number: 2, employer_id: fintual.id, description: "At Fintual, he built a database using PostgreSQL for 100K users, in a team of 5 engineers. It was a 1 year project.")
+experience2.save
+
+#candidate2
+experience3 = candidate2.previous_experiences.create(number: 1, employer_id: rappi.id, description: "At Rappi, he developped a real-time notification system using  websockets for 10K users, in a team of 20 engineers.
+It was a 2 months project in Scrum using Circle CI.")
+experience3.save
+experience4 = candidate2.previous_experiences.create(number: 2, employer_id: fintual.id, description: "At Fintual, he built a database using PostgreSQL for 100K users, in a team of 5 engineers. It was a 1 year project.")
+experience4.save
+
+#candidate3
+experience5 = candidate3.previous_experiences.create(number: 1, employer_id: rappi.id, description: "At Rappi, he developped a real-time notification system using  websockets for 10K users, in a team of 20 engineers.
+It was a 2 months project in Scrum using Circle CI.")
+experience5.save
+experience6 = candidate3.previous_experiences.create(number: 2, employer_id: fintual.id, description: "At Fintual, he built a database using PostgreSQL for 100K users, in a team of 5 engineers. It was a 1 year project.")
+experience6.save
+
+
+p "creating experience comment per previous experiences "
+
+comment1 = matching1.experience_comments.create(previous_experience_id: experience1, comment: "High level experience")
+comment2 = matching1.experience_comments.create(previous_experience_id: experience1, comment: "Same industry")
+
+
+comment3 = matching2.experience_comments.create(previous_experience_id: experience3, comment: "Managing role")
+comment4 = matching2.experience_comments.create(previous_experience_id: experience3, comment: "Close to your req")
+
+
+comment5 = matching3.experience_comments.create(previous_experience_id: experience5, comment: "High level experience")
+comment6 = matching3.experience_comments.create(previous_experience_id: experience5, comment: "Same industry")
+
+
 
 p "finished!"

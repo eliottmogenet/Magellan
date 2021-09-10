@@ -15,20 +15,20 @@ $(document).ready(function(){
 
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
-  <p><b><%= @users.count %></b> profiles this week</p>
+  <p><b><%= @req.users.where(:matchings => {:status => nil }).count %></b><%= + " " + @req.title.pluralize.downcase%> this week</p>
 
 </div>
 <div class="class="affectedDiv>
   <div class="candidate_nav">
     <ul class="nav" id="myTab">
   <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.count %>)</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.where(:matchings => {:status => nil }).count %>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Started</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Started(<%= @req.users.where(:matchings => { :status => "messaged" }).count %>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-archived" role="tab" aria-controls="pills-contact" aria-selected="false">Archived</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-archived" role="tab" aria-controls="pills-contact" aria-selected="false">Archived(<%= @req.users.where(:matchings => { :status => "archived" }).count %>)</a>
   </li>
   </ul>
   </div>
@@ -36,10 +36,24 @@ $(document).ready(function(){
 <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
 
 <div class="tab-content" id="pills-tabContent">
-  <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="tab-pane show active" id="pills-new" role="tabpanel" aria-labelledby="pills-home-tab">
 
           <% @req.users.where(:matchings => {:status => nil }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
+                  <% if user == @user %>
+                    <div class="info actived">
+                      <div class="info">
+                    <div class="photo">
+                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                    </div>
+                    <div class="description">
+                    <p id="name"><%= user.first_name + " " + user.last_name %><p>
+                    <p id= "job"><%= user.job %></p>
+                    <p id="location"><%= user.city %></p>
+                    </div>
+                  </div>
+                </div>
+                  <% elsif user != @user  %>
                   <div class="info">
                     <div class="photo">
                       <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
@@ -50,14 +64,30 @@ $(document).ready(function(){
                     <p id="location"><%= user.city %></p>
                     </div>
                   </div>
+                  <% end %>
+
                 <% end %>
               <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
           <% end %>
     </div>
-    <div class="tab-pane fade"  id="pills-current" role="tabpanel" aria-labelledby="pills-pro-tab">
+    <div class="tab-pane"  id="pills-current" role="tabpanel" aria-labelledby="pills-pro-tab">
 
           <% @req.users.where(:matchings => { :status => "messaged" }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
+                  <% if user == @user %>
+                    <div class="info actived">
+                      <div class="info">
+                    <div class="photo">
+                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                    </div>
+                    <div class="description">
+                    <p id="name"><%= user.first_name + " " + user.last_name %><p>
+                    <p id= "job"><%= user.job %></p>
+                    <p id="location"><%= user.city %></p>
+                    </div>
+                  </div>
+                </div>
+                  <% elsif user != @user  %>
                   <div class="info">
                     <div class="photo">
                       <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
@@ -68,14 +98,30 @@ $(document).ready(function(){
                     <p id="location"><%= user.city %></p>
                     </div>
                   </div>
+                  <% end %>
+
                 <% end %>
               <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
           <% end %>
     </div>
-    <div class="tab-pane fade" id="pills-archived" role="tabpanel" aria-labelledby="pills-contact-tab">
+    <div class="tab-pane" id="pills-archived" role="tabpanel" aria-labelledby="pills-contact-tab">
 
       <% @req.users.where(:matchings => { :status => "archived" }).each do |user| %>
-                <%= link_to req_user_path(@req, user) do %>
+              <%= link_to req_user_path(@req, user) do %>
+                  <% if user == @user %>
+                    <div class="info actived">
+                      <div class="info">
+                    <div class="photo">
+                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                    </div>
+                    <div class="description">
+                    <p id="name"><%= user.first_name + " " + user.last_name %><p>
+                    <p id= "job"><%= user.job %></p>
+                    <p id="location"><%= user.city %></p>
+                    </div>
+                  </div>
+                </div>
+                  <% elsif user != @user  %>
                   <div class="info">
                     <div class="photo">
                       <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
@@ -86,6 +132,8 @@ $(document).ready(function(){
                     <p id="location"><%= user.city %></p>
                     </div>
                   </div>
+                  <% end %>
+
                 <% end %>
               <%= cl_image_tag("Line_6_u4e9nl", width: 320) %>
           <% end %>
@@ -93,6 +141,14 @@ $(document).ready(function(){
     </div>
 
 
+<style>
+
+  .active {
+    color: black;
+  }
+
+
+</style>
 
 
 

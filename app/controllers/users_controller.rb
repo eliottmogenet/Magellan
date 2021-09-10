@@ -24,7 +24,6 @@ class UsersController < ApplicationController
     @req = Req.find(params[:req_id])
     @match = @user.matchings.where(req_id: @req.id)
     @match.update(status: "messaged")
-      redirect_to req_users_path(@req)
   end
 
   def archive
@@ -32,6 +31,5 @@ class UsersController < ApplicationController
     @req = Req.find(params[:req_id])
     @match = @user.matchings.where(req_id: @req.id)
     @match.update(status: "archived")
-      redirect_to req_users_path(@req)
   end
 end
