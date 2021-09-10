@@ -499,6 +499,22 @@
       "inverse_of": null,
       "widget": null,
       "validations": []
+    }, {
+      "field": "users",
+      "type": ["Number"],
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": false,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": "User.id",
+      "inverse_of": "country",
+      "relationship": "HasMany",
+      "widget": null,
+      "validations": []
     }],
     "segments": [],
     "actions": []
@@ -808,7 +824,7 @@
       "is_sortable": true,
       "is_virtual": false,
       "reference": "PreviousExperience.id",
-      "inverse_of": null,
+      "inverse_of": "experience_comments",
       "relationship": "BelongsTo",
       "widget": null,
       "validations": []
@@ -1154,6 +1170,22 @@
       "is_virtual": false,
       "reference": null,
       "inverse_of": null,
+      "widget": null,
+      "validations": []
+    }, {
+      "field": "experience_comments",
+      "type": ["Number"],
+      "default_value": null,
+      "enums": null,
+      "integration": null,
+      "is_filterable": false,
+      "is_read_only": false,
+      "is_required": false,
+      "is_sortable": true,
+      "is_virtual": false,
+      "reference": "ExperienceComment.id",
+      "inverse_of": "previous_experience",
+      "relationship": "HasMany",
       "widget": null,
       "validations": []
     }],
@@ -1851,7 +1883,7 @@
       "is_sortable": true,
       "is_virtual": false,
       "reference": "Country.id",
-      "inverse_of": null,
+      "inverse_of": "users",
       "relationship": "BelongsTo",
       "widget": null,
       "validations": []

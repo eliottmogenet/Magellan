@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+Country.destroy_all
 Req.destroy_all
 User.destroy_all
 Matching.destroy_all
@@ -102,7 +103,7 @@ laravel.save!
 p "creating speaking language"
 
 
-english = SpeakingLanguage.new(name: "English 🇺🇸")
+english = SpeakingLanguage.new(name: "English")
 english.save!
 spanish = SpeakingLanguage.new(name: "Spanish")
 spanish.save!

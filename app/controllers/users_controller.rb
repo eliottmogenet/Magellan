@@ -16,20 +16,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     #@reqs = Req.all
     @customer = current_user.customer
-    @match = @user.matchings.where(req_id: @req.id)
+    @match = Matching.find_by(req_id: @req, user_id: @user)
+    @known_stacks = @user.user_stacks
+    @country = Country.find_by(@user.country_id)
   end
 
-  def messaged
+  def message
     @user = User.find(params[:id])
     @req = Req.find(params[:req_id])
-    @match = @user.matchings.where(req_id: @req.id)
-    @match.update(status: "messaged")
+    @match = Matching.find_by(req_id: @req, user_id: @user)
+    @match.status = "messaged"
+    @match.save!
   end
 
-  def archive
+  def archived
     @user = User.find(params[:id])
     @req = Req.find(params[:req_id])
-    @match = @user.matchings.where(req_id: @req.id)
+    @match = Matching.find_by(req_id: @req, user_id: @user)
     @match.update(status: "archived")
   end
 end
