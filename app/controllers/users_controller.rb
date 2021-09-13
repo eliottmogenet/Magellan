@@ -19,20 +19,44 @@ class UsersController < ApplicationController
     @match = Matching.find_by(req_id: @req, user_id: @user)
     @known_stacks = @user.user_stacks
     @country = Country.find_by(@user.country_id)
+    #@experience1 = PreviousExperience.where(user_id: @user).first
   end
 
-  def message
+  #def edit
+  # @match = Matching.find_by(req_id: @req, user_id: @user)
+  #end
+
+ def update
     @user = User.find(params[:id])
     @req = Req.find(params[:req_id])
     @match = Matching.find_by(req_id: @req, user_id: @user)
     @match.status = "messaged"
+    @match.update(params_match)
     @match.save!
+      redirect_to req_user_path(@req, @user)
   end
+
+
+ #def message
+    #@user = User.find(params[:id])
+    #@req = Req.find(params[:req_id])
+    #@match = Matching.find_by(req_id: @req, user_id: @user)
+    #@match.status = "messaged"
+    #@match.save!
+      #redirect_to req_user_path(@req, @user)
+  #end
 
   def archived
     @user = User.find(params[:id])
     @req = Req.find(params[:req_id])
     @match = Matching.find_by(req_id: @req, user_id: @user)
     @match.update(status: "archived")
+      redirect_to req_user_path(@req, @user)
   end
+end
+
+#private
+
+def params_match
+  params.require(:matching).permit(:matching, :message_content, :status, :comment, :req_id, :user_id)
 end

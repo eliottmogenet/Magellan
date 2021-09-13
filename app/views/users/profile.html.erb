@@ -1,3 +1,5 @@
+
+
 <div class="propro">
   <div class="id-info">
     <div class="profile-info">
@@ -6,7 +8,7 @@
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
-                    <p><%= @user.job %> </p>
+                    <p><%= @user.job %> (Level <%= @match.level %>)</p>
                     <p id="loc"><%= @user.city + " " %><i class="fab fa-github"></i><%= + " " %><i class="fab fa-linkedin-in"></i></p>
                 </div>
       </div>
@@ -18,9 +20,14 @@
 </div>
 
   <div class="choices">
-    <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
-      Send message <i class="fas fa-paper-plane"></i>
-    </button1>
+    <div>
+      <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
+        Send message <i class="fas fa-paper-plane"></i>
+      </button1>
+    </div>
+    <div>
+      <%= button_to "Archive", archive_req_user_path(@req, @user), class: "choice", id: "dis"%>
+    </div>
   </div>
   <div class="profile-nav">
   <ul class="nav">
@@ -30,33 +37,29 @@
     <li class="nav-item">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-location" role="tab" aria-controls="pills-home" aria-selected="true">Location</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-expectations" role="tab" aria-controls="pills-contact" aria-selected="false">Expectations</a>
-    </li>
   </ul>
   <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
   </div>
   <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-skills" role="tabpanel" aria-labelledby="pills-home-tab">
-      <div class="loca">
+      <div class="loca" >
         <p style="width: 310px; text-align: justify;"><%= @match.matching_description %></p>
       </div>
-    <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
       <div class="staks">
         <% @known_stacks.each do | user_stack | %>
           <% if user_stack.able_to_learn == false %>
-                <div class="stack">
-                  <p style="color: white"><%= user_stack.stack.name%> - <%= user_stack.years_xp %> years </p>
+                <div class="stack" data-toggle="tooltip" data-placement="top" title="Mastered">
+                  <p style="color: white;"><%= user_stack.stack.name%></p>
               </div>
           <% end %>
         <% end %>
       </div>
-      <div class="staks">
+      <div class="staks" data-toggle="tooltip" data-placement="top" title="Able to learn">
         <% @known_stacks.each do | user_stack | %>
           <% if user_stack.able_to_learn == true %>
                 <div class="staks">
                   <div class="stack-disc" style="background-color: #EDEAFA">
-                    <p style="color: black; font-size: 10px"><%= user_stack.stack.name %></p>
+                    <p style="color: black; font-size: 10px;"><%= user_stack.stack.name %></p>
                   </div>
               </div>
           <% end %>
@@ -67,70 +70,118 @@
         <h5 style="font-size: 15px;">Past projects</h5>
 
       <% @user.previous_experiences.each_with_index do |experience, index| %>
-        <p style="width: 310px; text-align: justify;"><%= index + 1 %> - <%= experience.description %></p>
-        <p>Learn more about <%= experience.employer.name %> ></p>
+        <p style="width: 310px; text-align: justify;"><%= index + 1 %> - <%= experience.description %> </p>
+        <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= experience.id %>">
+            Learn more about <%= experience.employer.name %> >
+        </a>
+
+          <div class="modal fade" id="modal-<%= experience.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="title-company">
+                    <div>
+                      <%= cl_image_tag experience.employer.logo.key, width: 60, height: 60 %>
+                    </div>
+                    <div style="margin-left: 20px">
+                      <h3><%= experience.employer.name %></h3>
+                      <div class="title-company">
+                        <div class="stack-disc" style="background-color: #EDEAFA"><p style="color: black"><%= experience.employer.industry %></p></div>
+                        <div class="stack-disc" style="background-color: #EDEAFA"><p style="color: black"><%= experience.employer.funding_stage %></p></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="margin-top: 10px;">
+                    <p><%= experience.employer.description %></p>
+                    <hr>
+                  </div>
+                  <div class="title-company">
+                    <div>
+                      <%= cl_image_tag @user.photo.key, width: 40, height: 40 %>
+                    </div>
+                    <div style="margin-left: 20px">
+                      <p><b><%= @user.first_name %> at <%= experience.employer.name %></b></p>
+                      <p style="color: grey;  line-height: 0px"><%= experience.started_at %> - <%= experience.end_at %></p>
+                    </div>
+                    <div style="margin-left: 30px">
+                      <p><b>Fundraisings 💸 </b></p>
+                      <p style="color: grey; line-height: 0px"><%= experience.fundraising %></p>
+                    </div>
+                    <div style="margin-left: 30px">
+                      <p><b>Engineering team 💻 </b></p>
+                      <p style="color: grey; line-height: 0px"><%= experience.team_size %></p>
+                    </div>
+                  </div>
+                  <hr>
+              </div>
+            </div>
+          </div>
+
         <div class="staks">
         <% experience.experience_comments.each do |analysis| %>
-          <div class="stack-disc" style="background-color: #EDEAFA">
-            <p style="color: black; font-size: 10px"><%= analysis.comment %></p>
+          <div class="comment">
+            <p style="color: white; font-size: 9px"><%= analysis.comment %></p>
           </div>
         <% end %>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
-    <% end  %>
+  <% end %>
+
+    </div>
+    <div class="loca">
+      <h5 style="font-size: 15px;">University</h5>
+      <p><%= @user.university %>
     </div>
     <div class="loca">
       <h5 style="font-size: 15px;">Soft skills </h5>
       <p>🇺🇸 - <%= @user.speaking_languages.first.name %>- <%= @user.user_speaking_languages.first.level %></p>
       <p>🇪🇸 - <%= @user.speaking_languages.second.name %>- <%= @user.user_speaking_languages.second.level %> (<%= @user.user_speaking_languages.second.country %>)</p>
-      <% @user.coding_practices.each do |pratrice|%>
-      <p><i class="fas fa-tasks"></i> <%= pratrice.name %>
-      <% end %>
 
       </p>
     </div>
   </div>
 
     <div class="tab-pane fade" id="pills-location" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div class="loca" style="margin-top: 10px">
+        <% if @user.full_remote_only == true %>
+        <div class="openn" style="background-color: #EDEAFA"><p>🌍 Full remote </p></div>
+
+
+        <% elsif @user.contractor_possible == true  %>
+        <div class="openn" style="background-color: #EDEAFA"><p>⚖️ Contractor possible</p></div>
+
+        <% elsif @user.contractor_possible == true  %>
+          <div class="openn" style="background-color: #EDEAFA"><p>🛫 Open to relocation</p></div>
+
+        <% end %>
+      </div>
       <div class="loca">
         <p>Timezone : <%= @user.timezone %></p>
-        <p><b>  XX overlap</b> with your team </p>
         <div class="team-overlap">
           <div>
            🏠
           </div>
-          <p style="margin-top: 4px; margin-left: 10px;"><b><%= rand(6..9) %></b> hours with HQ </p>
+          <p style="margin-top: 4px; margin-left: 10px;"><b><%= @match.timezone_overlap %> hours </b> overlap with HQ </p>
         </div>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Compensation for this profile</h5>
-        <p>💵 Expected : <b> $ <%= @user.expected_wage %> K </b><small>(- <%= rand(1..15)%> % of your global floor)</small></p>
+        <p>💵 Expected : <b> $ <%= @user.expected_wage %> K </b></p>
         <p>📏 Area median : <%= @country.area_median_wage %> </p>
         <p>🗓 Notice period : <%= @country.notice_period %> </p>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
+       <div class="loca">
+        <h5 style="font-size: 15px">Career expectations</h5>
+      </div>
+        <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Benefits</h5>
-        <p>🚑  <%= @country.healthcare %> <small>(average cost $2K month)</small></p>
+        <p>🚑  <%= @country.healthcare %></p>
         <p>👴 </p>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       </div>
     </div>
-
-  <div class="tab-pane fade" id="pills-expectations" role="tabpanel" aria-labelledby="pills-home-tab">
-    <div class="loca">
-      <h5 style="font-size: 15px; padding-top: 30px">Next technical steps</h5>
-
-      <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
-      <p style="color: #777581">Stacks and tools to explore</p>
-    </div>
-    <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
-    <div class="loca">
-      <h5 style="font-size: 15px; padding-top: 30px">Next career steps</h5>
-
-    </div>
-  </div>
   </div>
 </div>
 
@@ -141,32 +192,80 @@
     <div class="modal-content">
       <div class="mod-title">
         <h5 class="modal-title" id="exampleModalLongTitle">Send a message <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
-          <p>Start a conversation with <%= @user.first_name + " " %>. He will be notified in Magellan. </p>
+          <p>Start a conversation with <%= @user.first_name + " " %>.</p>
       <div style="margin-top: 5px">
-      <%= cl_image_tag @users.first.photo.key, height: 35, width: 35, style: "z-index: 1" %>
-      <%= cl_image_tag @user.photo.key, height: 35, width: 35, style: "margin-left: -10px;" %>
+      <%= cl_image_tag @user.photo.key, height: 35, width: 35 %>
     </div>
       </div>
-
       <div class="modal-body">
-        <textarea id="description" placeholder="Type a relevant message to <%= @user.first_name %> "></textarea>
-      <hr>
+        <%= simple_form_for @match, url: req_user_path(@req, @user) do |f| %>
+          <%= f.input :message_content, :placeholder => "Type a relevant message to the talent", :input_html => {:rows => 10}, label: false %>
+          <hr>
+          <%= f.input :rate,
+          :wrapper_html => { class: 'text'},
+          :label => "How much is the talent relevant according to you ? (1-5)"%>
+          <%= f.input :comment,
+          :label => "Feedback for Magellan team (private)",
+          :input_html => {:rows => 6} %>
+        <%= f.button :submit, 'Start conversation', class:"choice" %>
+      <% end %>
+      <button1 type="button" class="choice" id='dis' data-dismiss="modal" style="margin-top: 10px">Cancel </button1>
 
-      <div class="mod-footer">
-      <button1 type="button" class="choice" id='dis' data-dismiss="modal">Cancel </button1>
-        <%= link_to message_req_user_path(@req, @user), method: :post do %>
-            <button1 type="button" class="choice" data-dismiss="modal" id="starting">
-              Start conversation <i class="fas fa-paper-plane"></i>
-            </button1>
-        <% end %>
-      </div>
       </div>
     </div>
   </div>
 </div>
 
 
+
 <style>
+
+
+.openn {
+  text-align: center;
+  width: 100px;
+  height: 25px;
+  padding: 7px;
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+
+.text1 {
+  background-color: black;
+}
+
+
+
+.text {
+  font-size: 10px;
+  color: black;
+
+}
+
+.mod-footer {
+  display: flex,
+  justify-content: center;
+}
+
+.modal-content {
+  padding-top: 30px!important;
+}
+
+.title-company {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.comment {
+  background-color:#3CBEB1;
+  width: 100px;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 6px;
+  height: 25px;
+  text-align: center;
+
+}
 
 .alert {
   text-align: center;
@@ -308,6 +407,8 @@ small {
 
 .choices {
   padding-left: 25px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .choice {
@@ -317,6 +418,7 @@ small {
   border-radius: 5px;
   font-size: 10px;
   margin-right: 10px;
+  border: none;
 }
 
 .choice:hover {
@@ -460,9 +562,18 @@ small {
 }
 
 
+
+
 </style>
 
+
 <script>
+
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
   const starting = document.getElementById("starting");
 const alert1 = document.getElementById("alert-success");
   starting.addEventListener("click", (event) => {

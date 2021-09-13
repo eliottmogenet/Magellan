@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_04_190037) do
+ActiveRecord::Schema.define(version: 2021_09_12_194741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,6 +62,9 @@ ActiveRecord::Schema.define(version: 2021_09_04_190037) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "description"
+    t.string "funding_stage"
+    t.string "industry"
   end
 
   create_table "experience_comments", force: :cascade do |t|
@@ -86,6 +89,7 @@ ActiveRecord::Schema.define(version: 2021_09_04_190037) do
     t.integer "rate"
     t.text "comment"
     t.text "message_content"
+    t.integer "level"
     t.index ["req_id"], name: "index_matchings_on_req_id"
     t.index ["user_id"], name: "index_matchings_on_user_id"
   end
@@ -97,6 +101,10 @@ ActiveRecord::Schema.define(version: 2021_09_04_190037) do
     t.bigint "employer_id"
     t.integer "number"
     t.text "description"
+    t.string "started_at"
+    t.string "end_at"
+    t.string "team_size"
+    t.string "fundraising"
     t.index ["employer_id"], name: "index_previous_experiences_on_employer_id"
     t.index ["user_id"], name: "index_previous_experiences_on_user_id"
   end
@@ -178,6 +186,8 @@ ActiveRecord::Schema.define(version: 2021_09_04_190037) do
     t.boolean "contractor_possible"
     t.bigint "customer_id"
     t.bigint "country_id"
+    t.string "university"
+    t.boolean "relocation_possible", default: false
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
