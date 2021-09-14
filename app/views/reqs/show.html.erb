@@ -14,7 +14,7 @@
                     <li class="nav-item dropdown">
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
                       <%= link_to "Send feedback 💌", "#", class: "dropdown-item" %>
-                        <%= link_to "Change password 🔒", "#", class: "dropdown-item" %>
+                        <%= link_to "Change password 🔒", , class: "dropdown-item" %>
                         <%= link_to "Log out 🚪", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                     </li>
@@ -41,18 +41,16 @@
         <% @customer.reqs.each do |req| %>
 
       <% if req.users.where(:matchings => {:status => nil }).any? %>
-
         <%= link_to req_user_path(req, req.users.where(:matchings => {:status => nil }).first) do %>
-            <div class="req_box1">
+            <div class="req_box1 <%= ' blanc' if req == @req %>">
               <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
             </div>
         <% end %>
 
       <% else %>
 
-
         <%= link_to req_users_path(req) do %>
-            <div class="req_box1">
+            <div class="req_box1 <%= ' blanc' if req == @req %>">
               <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
             </div>
         <% end %>
@@ -95,6 +93,20 @@
 a:hover {
   text-decoration: none !important;
 }
+
+.blanc {
+  text-decoration: none !important;
+  color: white !important;
+  margin-left: 20px;
+  background-color: #282341;
+  width: 201px;
+  height: 38px;
+  border-radius: 10px;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 38px;
+}
+
 
 .alert {
   text-align: center;

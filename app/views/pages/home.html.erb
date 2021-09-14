@@ -1,2 +1,443 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+<body>
+  <section>
+    <div class="container">
+        <header>
+          <p>Magellan</p>
+        </header>
+      <div class="row-part1">
+        <div class="col-sm-12 col-lg-5" id="part1">
+          <div>
+            <h1>Engineer sourcing made easy for remote teams</h1>
+            <p>Magellan is your new global talent acquisition channel. Every week, unlock new pools of qualified remote engineers anywhere in the world and start recruiting. </p>
+            <a href="https://calendly.com/eliott-mogenet-freed/30min?month=2021-07" class="choice">Book a demo > </a>
+          </div>
+        </div>
+        <div class="col-sm-12 col-lg-7">
+          <%= cl_image_tag("Group_24_3_ahwdrd", width: 700, height: 692, id: "imgg") %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="section2">
+    <div class="container-sm-12">
+      <div class="row-part2" id="part2">
+          <div class="texti">
+            <h2>Stop missing the best developers. <br>Enter the world of remote hiring.</h2>
+            <p>Magellan enables you to source and reach out to remote engineers that fits your reqs. <br>Anywhere in the world. Effortelessly.   </p>
+          </div>
+          <div class="mappi">
+            <%= cl_image_tag("Group_26_2_spj0fk", width: 950, height: 619, id: "mappos") %>
+            <%= cl_image_tag("World_map__blue_dots_3_1_1_l3s6b3", width: 375, height: 620, id: "mappos2") %>
+            <%= cl_image_tag("dev1", width: 133, height: 45, class: "test1") %>
+            <%= cl_image_tag("dev2", width: 133, height: 45, class: "test2") %>
+            <%= cl_image_tag("dev3", width: 133, height: 45, class: "test3") %>
+            <%= cl_image_tag("dev4", width: 133, height: 45, class: "test4") %>
+            <%= cl_image_tag("dev5", width: 139, height: 45, class: "test5") %>
+            <%= cl_image_tag("dev6", width: 133, height: 45, class: "test6") %>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="collapse-title">
+        <p>How it works ?</p>
+        <h2>Put your engineer sourcing on autopilot in 5 mins. </h2>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-lg-4">
+        <div id="accordion">
+          <div class="card1">
+            <div id="headingOne">
+                  <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" onclick="myFunction1()"> Connect your ATS </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <p>We integrate your ATS to fit perfectly your recruiting workflow. Import all your reqs still opened.</p>
+              </div>
+            </div>
+            <%= cl_image_tag("Line_127_ewfl3c", width: 305, height: 1) %>
+          </div>
+          <div class="card1">
+            <div id="headingTwo">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" onclick="myFunction2()">
+                Rebuild your employer <br> branding abroad
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <p>Turn your traditionnal job descriptions to meaningful storytelling for remote candidates.</p>
+              </div>
+            </div>
+            <%= cl_image_tag("Line_127_ewfl3c", width: 305, height: 1) %>
+          </div>
+          <div class="card1">
+            <div id="headingThree">
+              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" onclick="myFunction3()">
+                  Select your areas <br> and start sourcing
+              </h5>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+              <div class="card-body">
+                <p>Every week, receive pools of passive remote developers, reach out, get replies and start recruiting.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-lg-8">
+        <div id="first-img" class="active">
+           <%= cl_image_tag("Group_33_1_txs0vv", width: 622, height: 420, id: "ig1") %>
+        </div>
+        <div id="second-img" class="inactive">
+          <%= cl_image_tag("Group_34_2_wkyiy1", width: 690, height: 420, id: "ig2") %>
+        </div>
+        <div id="third-img" class="inactive">
+          <%= cl_image_tag("Group_35_1_uva4rt", width: 706, height: 420, id: "ig3") %>
+        </div>
+      </div>
+      <div class="props">
+        <div class="value-pro">
+          <h5>💌 <br> Get replies.</h5>
+          <p>Forget the 10% answer rate. <br> Get replies and multiply your interest rate .</p>
+        </div>
+        <div class="value-pro">
+          <h5>⏳ <br> Reduce time to hire.</h5>
+          <p>Save hours browsing profiles on Linkedin. Get only pre-selected talents every weeks. </p>
+        </div>
+        <div class="value-pro">
+          <h5>🌍 <br>Increase diversity.</h5>
+          <p>Target engineers all over the world without lowering the quality of talents. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="end">
+      <p>© 2021 Magellan</p>
+      <p>Made with ❤️ from Paris </p>
+  </section>
+
+</body>
+
+<style>
+
+body {
+  background-color: white;
+  height: 100%;
+}
+
+p {
+  font-size: 14px;
+}
+
+h5 {
+   color: #090131;
+  font-weight: 700;
+}
+
+header p {
+  margin-left: 20px;
+  color: #090131;
+  padding-top: 20px;
+}
+
+#mappos2 {
+  display: none;
+}
+
+@media(max-width: 450px) {
+    .value-pro {
+      display: none;
+    }
+
+    #imgg {
+      width: 95%;
+      height: auto;
+    }
+     #ig1 {
+      width: 95% !important;
+      height: auto;
+}
+      #ig2 {
+      width: 95% !important;
+      height: auto;
+}
+     #ig3 {
+      width: 95% !important;
+      height: auto;
+}
+    .row-part1 h1{
+      text-align: center;
+}
+
+    .row-part1 p{
+      text-align: center;
+}
+    .test2 {
+      display: none;
+    }
+
+    .test3 {
+      display: none;
+    }
+
+    .test6 {
+      display: none;
+    }
+
+    #mappos {
+      display: none;
+    }
+
+    #mappos2 {
+      display: block;
+    }
+
+    header p {
+      text-align: center;
+    }
+
+    .choice {
+      display: table;
+   margin: 0 auto;
+    }
+}
+
+.choice {
+  padding-top: 20px;
+  margin-top: 20px;
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+
+.props {
+  display: flex;
+  justify-content: center;
+  margin-left: 40px;
+}
+
+.value-pro {
+  text-align: center;
+  width: 250px;
+  margin: 50px;
+}
+
+.value-pro p {
+  margin-top: 20px;
+  color: #777581;
+}
+
+.mb-0:hover {
+    cursor: pointer;
+}
+
+
+.end {
+  background-color: #090131;;
+  color: white;
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom:60px ;
+
+}
+
+.mb-0 {
+  padding-bottom: 10px;
+}
+
+.collapse-title {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 80px;
+
+}
+
+
+.collapse-title p {
+  color: #090131;
+}
+
+.collapse-title h2 {
+  color: #090131;
+}
+
+
+
+.card-body {
+  padding-top: 10px;
+  padding-left: 0px !important;
+  padding-bottom: 0px !important;
+ }
+
+.card-body p {
+  color: #777581;
+}
+
+.test1 {
+  position: absolute;
+  margin-top: 170px;
+  margin-left: 100px;
+}
+
+.test2 {
+  position: absolute;
+  margin-top: 252px;
+  margin-left: -290px;
+}
+
+.test3 {
+  position: absolute;
+  margin-top: 242px;
+  margin-left: 390px;
+}
+
+
+.test4 {
+  position: absolute;
+  margin-top: 450px;
+  margin-left: 90px;
+}
+
+
+.test5 {
+  position: absolute;
+  margin-top: 400px;
+  margin-left: -100px;
+}
+
+
+.test6 {
+  position: absolute;
+  margin-top: 330px;
+  margin-left: 235px;
+}
+
+.mappi {
+  display: flex;
+  justify-content: center;
+}
+
+
+#part1 {
+  display: flex;
+  align-items: center;
+}
+
+#section2 {
+  background-color: #090131;
+  padding-top: 160px;
+  padding-bottom: 60px;
+
+}
+
+h1 {
+  color: #090131;
+  font-weight: 800;
+  line-height: 60px;
+}
+
+h2 {
+  font-weight: 800;
+}
+
+.texti {
+  text-align: center;
+}
+
+.row-part1 {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+.row-part1 p{
+  color: #777581;
+  font-size: 15px;
+  padding-bottom: 15px;
+}
+
+.inactive {
+  display: none;
+}
+
+.active {
+  display: block !important;
+}
+
+
+</style>
+
+<script>
+
+  function myFunction1() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("inactive");
+  a.classList.add("active");
+  b.classList.remove("active");
+  b.classList.add("inactive");
+  c.classList.remove("active");
+  c.classList.add("inactive");
+
+}
+
+function myFunction2() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("active");
+  a.classList.add("inactive");
+  b.classList.remove("inactive");
+  b.classList.add("active");
+  c.classList.remove("active");
+  c.classList.add("inactive");
+
+}
+
+function myFunction3() {
+  var a = document.getElementById("first-img");
+  var b = document.getElementById("second-img");
+  var c = document.getElementById("third-img");
+
+  a.classList.remove("active");
+  a.classList.add("inactive");
+  b.classList.remove("active");
+  b.classList.add("inactive");
+  c.classList.remove("inactive");
+  c.classList.add("active");
+}
+
+
+  window.sr = ScrollReveal();
+  sr.reveal('.test1', { delay: 450 });
+  sr.reveal('.test2', { delay: 900 });
+  sr.reveal('.test3', { delay: 1350 });
+  sr.reveal('.test4', { delay: 1800 });
+  sr.reveal('.test5', { delay: 2450 });
+  sr.reveal('.test6', { delay: 2900 });
+
+</script>

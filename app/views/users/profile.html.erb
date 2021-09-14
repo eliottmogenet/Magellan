@@ -9,7 +9,7 @@
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
                     <p><%= @user.job %> (Level <%= @match.level %>)</p>
-                    <p id="loc"><%= @user.city + " " %><i class="fab fa-github"></i><%= + " " %><i class="fab fa-linkedin-in"></i></p>
+                    <p id="loc"><%= @user.city + " "%><i class="fab fa-github"></i><%= + " " %><i class="fab fa-linkedin-in"></i>(<%= @user.status %>)</p>
                 </div>
       </div>
   </div>
@@ -167,18 +167,19 @@
       <div class="loca">
         <h5 style="font-size: 15px">Compensation for this profile</h5>
         <p>💵 Expected : <b> $ <%= @user.expected_wage %> K </b></p>
-        <p>📏 Area median : <%= @country.area_median_wage %> </p>
+        <p>📏 Area median : <%= @user.area_median_wage %> </p>
         <p>🗓 Notice period : <%= @country.notice_period %> </p>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
        <div class="loca">
         <h5 style="font-size: 15px">Career expectations</h5>
+        <p><%= @user.next_jobs %></p>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Benefits</h5>
         <p>🚑  <%= @country.healthcare %></p>
-        <p>👴 </p>
+        <p>👴 <%= @country.other_benefits %></p>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       </div>
     </div>
@@ -257,7 +258,8 @@
 }
 
 .comment {
-  background-color:#3CBEB1;
+  background-color:#090131;
+  opacity: 50%;
   width: 100px;
   border-radius: 5px;
   margin: 5px;
