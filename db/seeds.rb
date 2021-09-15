@@ -7,15 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+
 ExperienceComment.destroy_all
 PreviousExperience.destroy_all
 Matching.destroy_all
 UserStack.destroy_all
 UserSpeakingLanguage.destroy_all
 UserCodingPractice.destroy_all
-Country.destroy_all
 Req.destroy_all
 User.destroy_all
+Country.destroy_all
 Customer.destroy_all
 Stack.destroy_all
 Employer.destroy_all
