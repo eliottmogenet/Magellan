@@ -8,10 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-//= require rails-ujs
-//= require turbolinks
-//= require bootstrap
-//= require_tree .
 
 
 
