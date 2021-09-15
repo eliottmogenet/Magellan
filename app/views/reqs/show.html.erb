@@ -13,8 +13,7 @@
                   <% if user_signed_in? %>
                     <li class="nav-item dropdown">
                     <div class="dropdown-menu dropdown-menu-left" aria-labelledby="navbarDropdown">
-                      <%= link_to "Send feedback 💌", "#", class: "dropdown-item" %>
-                        <%= link_to "Change password 🔒", , class: "dropdown-item" %>
+                      <%= mail_to 'eliott@getmagellan.com', "Send feedback 💌", class: "dropdown-item" %>
                         <%= link_to "Log out 🚪", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
                     </div>
                     </li>
@@ -40,8 +39,8 @@
           width: 200, height: 1, style: 'margin-left: 20px;') %>
         <% @customer.reqs.each do |req| %>
 
-      <% if req.users.where(:matchings => {:status => nil }).any? %>
-        <%= link_to req_user_path(req, req.users.where(:matchings => {:status => nil }).first) do %>
+      <% if req.users.where(:matchings => {:status => "available" }).any? %>
+        <%= link_to req_user_path(req, req.users.where(:matchings => {:status => "available" }).first) do %>
             <div class="req_box1 <%= ' blanc' if req == @req %>">
               <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
             </div>

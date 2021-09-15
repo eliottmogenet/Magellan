@@ -9,7 +9,13 @@
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
                     <p><%= @user.job %> (Level <%= @match.level %>)</p>
-                    <p id="loc"><%= @user.city + " "%><i class="fab fa-github"></i><%= + " " %><i class="fab fa-linkedin-in"></i>(<%= @user.status %>)</p>
+                    <p id="loc"><%= @user.city + " "%>
+                  <% if @user.github_profile != nil %>
+                    <%= link_to @user.github_profile, target: :_blank do %>
+                      <i class="fab fa-github"></i><% end %><%= + " " %>
+                  <% end %>
+                    <%= link_to @user.linkedin_profile, target: :_blank do %>
+                      <i class="fab fa-linkedin-in"></i></i><% end %>(<%= @user.status %>)</p>
                 </div>
       </div>
   </div>
@@ -21,9 +27,15 @@
 
   <div class="choices">
     <div>
-      <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
-        Send message <i class="fas fa-paper-plane"></i>
-      </button1>
+      <% if @match.status == "messaged"  %>
+        <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
+          Message sent <i class="fas fa-check"></i>
+        </button1>
+      <% else %>
+        <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
+          Send message <i class="fas fa-paper-plane"></i>
+        </button1>
+      <% end %>
     </div>
     <div>
       <%= button_to "Archive", archive_req_user_path(@req, @user), class: "choice", id: "dis"%>
@@ -135,7 +147,6 @@
       <h5 style="font-size: 15px;">Soft skills </h5>
       <p>🇺🇸 - <%= @user.speaking_languages.first.name %>- <%= @user.user_speaking_languages.first.level %></p>
       <p>🇪🇸 - <%= @user.speaking_languages.second.name %>- <%= @user.user_speaking_languages.second.level %> (<%= @user.user_speaking_languages.second.country %>)</p>
-
       </p>
     </div>
   </div>
@@ -144,14 +155,14 @@
       <div class="loca" style="margin-top: 10px">
         <% if @user.full_remote_only == true %>
         <div class="openn" style="background-color: #EDEAFA"><p>🌍 Full remote </p></div>
+        <% end %>
 
+        <% if @user.contractor_possible == true  %>
+        <div class="openn2" style="background-color: #EDEAFA"><p>⚖️ Contractor possible</p></div>
+        <% end %>
 
-        <% elsif @user.contractor_possible == true  %>
-        <div class="openn" style="background-color: #EDEAFA"><p>⚖️ Contractor possible</p></div>
-
-        <% elsif @user.contractor_possible == true  %>
-          <div class="openn" style="background-color: #EDEAFA"><p>🛫 Open to relocation</p></div>
-
+        <% if @user.relocation_possible == true  %>
+          <div class="openn2" style="background-color: #EDEAFA"><p>🛫 Open to relocation</p></div>
         <% end %>
       </div>
       <div class="loca">
@@ -166,8 +177,8 @@
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Compensation for this profile</h5>
-        <p>💵 Expected : <b> $ <%= @user.expected_wage %> K </b></p>
-        <p>📏 Area median : <%= @user.area_median_wage %> </p>
+        <p>💵 Expected : <b> US$ <%= @user.expected_wage %> K </b></p>
+        <p>📏 Area median : US$ <%= @user.area_median_wage %> K </p>
         <p>🗓 Notice period : <%= @country.notice_period %> </p>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
@@ -193,7 +204,7 @@
     <div class="modal-content">
       <div class="mod-title">
         <h5 class="modal-title" id="exampleModalLongTitle">Send a message <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
-          <p>Start a conversation with <%= @user.first_name + " " %>.</p>
+          <p>Start a conversation with <%= @user.first_name %>.</p>
       <div style="margin-top: 5px">
       <%= cl_image_tag @user.photo.key, height: 35, width: 35 %>
     </div>
@@ -203,18 +214,24 @@
           <%= f.input :message_content, :placeholder => "Type a relevant message to the talent", :input_html => {:rows => 10}, label: false %>
           <hr>
           <%= f.input :rate,
-          :wrapper_html => { class: 'text'},
-          :label => "How much is the talent relevant according to you ? (1-5)"%>
+          :label => "How much is the talent relevant according to you ? (1-5)" %>
           <%= f.input :comment,
           :label => "Feedback for Magellan team (private)",
           :input_html => {:rows => 6} %>
-        <%= f.button :submit, 'Start conversation', class:"choice" %>
+        <%= f.button :submit, 'Start conversation', class:"choice", 'data-toggle': "collapse", 'data-target': "#alert-success" %>
       <% end %>
       <button1 type="button" class="choice" id='dis' data-dismiss="modal" style="margin-top: 10px">Cancel </button1>
 
       </div>
     </div>
   </div>
+</div>
+
+<div class="flash flash-success alert alert-dismissible fade" role="alert" id="alert-success">
+  <span><%= @user.last_name %> has been messaged </span>
+  <a data-dismiss="alert" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
 </div>
 
 
@@ -225,6 +242,15 @@
 .openn {
   text-align: center;
   width: 100px;
+  height: 25px;
+  padding: 7px;
+  margin-bottom: 10px;
+  border-radius: 7px;
+}
+
+.openn2 {
+  text-align: center;
+  width: 150px;
   height: 25px;
   padding: 7px;
   margin-bottom: 10px;
@@ -332,6 +358,14 @@ h5 {
   color: #090131;
 }
 
+.modal-body input {
+  font-size: 10px;
+}
+
+.modal-body label {
+  font-size: 10px;
+  color: black;
+}
 
 .job-desc {
   margin-left: 10px;
@@ -563,23 +597,15 @@ small {
   padding-top: 10px;
 }
 
-
-
-
 </style>
 
 
 <script>
 
-
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
-
   const starting = document.getElementById("starting");
-const alert1 = document.getElementById("alert-success");
+const alert1 = document.getElementById("alert");
   starting.addEventListener("click", (event) => {
-    alert1.classList.toggle("show");
+    alert1.classList.addClass("show");
   });
 
 </script>

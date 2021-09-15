@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     @customer = current_user.customer
     @match = Matching.find_by(req_id: @req, user_id: @user)
     @known_stacks = @user.user_stacks
-    @country = Country.find_by(@user.country_id)
+    @country = @user.country
+    #@country = Country.find_by(@user.country_id)
     #@experience1 = PreviousExperience.where(user_id: @user).first
   end
 
@@ -58,5 +59,5 @@ end
 #private
 
 def params_match
-  params.require(:matching).permit(:matching, :message_content, :status, :comment, :req_id, :user_id)
+  params.require(:matching).permit(:matching, :message_content, :status, :rate, :comment, :req_id, :user_id)
 end

@@ -8,6 +8,7 @@
     <div class="container">
         <header>
           <p>Magellan</p>
+          <p id="log"><%= link_to 'Login', new_user_session_path %></p>
         </header>
       <div class="row-part1">
         <div class="col-sm-12 col-lg-5" id="part1">
@@ -129,6 +130,11 @@
 
 <style>
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
 body {
   background-color: white;
   height: 100%;
@@ -194,6 +200,10 @@ header p {
     }
 
     #mappos {
+      display: none;
+    }
+
+    #log {
       display: none;
     }
 

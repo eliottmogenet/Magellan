@@ -1,4 +1,8 @@
-<h2>Log in</h2>
+
+<body>
+
+<div class="login">
+  <h2 style="text-align: center">Login to Magellan</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -13,8 +17,69 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
+    <%= f.button :submit, "Log in 🌍", class: "choice" %>
+    <%= render "devise/shared/links", class: "center" %>
+
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+
+
+
+
+</div>
+
+
+
+</body>
+
+
+
+
+<style>
+
+.center {
+  text-align: center;
+}
+
+ .form-actions {
+  text-align: center;
+ }
+
+
+.choice {
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+  .login {
+    width: 500px;
+
+  }
+
+  body {
+    background-color: #090131;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+  }
+
+
+
+
+
+
+</style>
+
+

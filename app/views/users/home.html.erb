@@ -15,14 +15,14 @@ $(document).ready(function(){
 
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
-  <p><b><%= @req.users.where(:matchings => {:status => nil }).count %></b><%= + " " + @req.title.pluralize.downcase%> this week</p>
+  <p><b><%= @req.users.where(:matchings => {:status => "available" }).count %></b><%= + " " + @req.title.downcase%> this week</p>
 
 </div>
 <div class="class="affectedDiv>
   <div class="candidate_nav">
     <ul class="nav" id="myTab">
   <li class="nav-item">
-    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.where(:matchings => {:status => nil }).count %>)</a>
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.where(:matchings => {:status => "available" }).count %>)</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Started(<%= @req.users.where(:matchings => { :status => "messaged" }).count %>)</a>
@@ -38,8 +38,8 @@ $(document).ready(function(){
 <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane show active" id="pills-new" role="tabpanel" aria-labelledby="pills-home-tab">
 
-      <% if @req.users.where(:matchings => {:status => nil }).any? %>
-          <% @req.users.where(:matchings => {:status => nil }).each do |user| %>
+      <% if @req.users.where(:matchings => {:status => "available" }).any? %>
+          <% @req.users.where(:matchings => {:status => "available" }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
                   <% if user == @user %>
                     <div class="info actived">
