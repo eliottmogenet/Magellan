@@ -65,15 +65,15 @@ p "creating matchings"
 
 
 matching1 = req1.matchings.create(user_id: candidate1.id, level: 4, matching_description: "Anna might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
-difference with your HQ in NYC.", timezone_overlap: 5)
+difference with your HQ in NYC.", timezone_overlap: 5, status: "available")
 matching1.save!
 
 matching2 = req1.matchings.create(user_id: candidate3.id, level: 3, matching_description: "Roberto might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
-difference with your HQ in NYC.",  timezone_overlap: 5)
+difference with your HQ in NYC.",  timezone_overlap: 5, status: "available")
 matching2.save!
 
 matching3 = req2.matchings.create(user_id: candidate3.id, level: 3, matching_description: "Kevin might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database) . Only 3h timezone
-difference with your HQ in NYC.",  timezone_overlap: 5)
+difference with your HQ in NYC.",  timezone_overlap: 5, status: "available")
 matching3.save!
 
 p "creating employers"
