@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     @req = Req.find(params[:req_id])
     #@users_matched = @req.users
     @customer = current_user.customer
+    @match = Matching.find_by(req_id: @req, user_id: @user)
   end
 
   def show
