@@ -44,19 +44,24 @@ req2.save
 req3 = customer1.reqs.create(title: "Node.js Engineer ", salary_range: 60)
 req3.save
 
+p "creating countries"
+
+chile = Country.new(name: "Chile 🇨🇱", notice_period: "2 weeks", healthcare: "Chilean healthcare", other_benefits: "PTO, 3rd month" )
+chile.save!
+
 p "creating candidates"
 
-candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", active: true, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true)
+candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", active: true, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
 candidate1.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate1.save!
 
-candidate2 = User.new(first_name: "Roberto", last_name: "De Vez", email: "alison1@datatog.com", password: "seb1@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 57, current_employer: "Facebook" , status: "passive", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true)
+candidate2 = User.new(first_name: "Roberto", last_name: "De Vez", email: "alison1@datatog.com", password: "seb1@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 57, current_employer: "Facebook" , status: "passive", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
 candidate2.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate2.save!
 
-candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 47, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true)
+candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 47, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
 candidate3.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate3.save!
@@ -121,11 +126,6 @@ tdd = CodingPractice.new(name: "TDD")
 tdd.save!
 code_review = CodingPractice.new(name: "Code review")
 code_review.save!
-
-p "creating countries"
-
-chile = Country.new(name: "Chile 🇨🇱", notice_period: "2 weeks", healthcare: "Chilean healthcare", other_benefits: "PTO, 3rd month" )
-chile.save!
 
 #per users
 
