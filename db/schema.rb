@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_14_021846) do
+ActiveRecord::Schema.define(version: 2021_09_16_215532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,6 @@ ActiveRecord::Schema.define(version: 2021_09_14_021846) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.string "notice_period"
-    t.string "share_package"
     t.string "healthcare"
     t.string "other_benefits"
   end
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(version: 2021_09_14_021846) do
     t.text "description"
     t.string "funding_stage"
     t.string "industry"
+    t.text "challenges"
   end
 
   create_table "experience_comments", force: :cascade do |t|
@@ -174,7 +174,6 @@ ActiveRecord::Schema.define(version: 2021_09_14_021846) do
     t.boolean "tech_recruiter"
     t.string "job"
     t.string "citizenship"
-    t.string "current_employer"
     t.integer "expected_wage"
     t.string "timezone"
     t.string "city"
@@ -188,7 +187,6 @@ ActiveRecord::Schema.define(version: 2021_09_14_021846) do
     t.string "university"
     t.boolean "relocation_possible", default: false
     t.string "next_jobs"
-    t.boolean "active", default: false
     t.string "area_median_wage"
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["customer_id"], name: "index_users_on_customer_id"

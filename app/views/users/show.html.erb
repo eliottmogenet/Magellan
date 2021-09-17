@@ -15,7 +15,7 @@
       <div class="col-7">
       <div class="row">
         <div class="col-6 mapp">
-          <%= cl_image_tag @user.map.key, height:750, width: 395 %>
+              <%= cl_image_tag @user.map.key, height:750, width: 395 %>
         </div>
         <div class="col-6 profile" style="background-color: #FFFFFF">
             <%= render template: "users/profile" %>
@@ -226,13 +226,3 @@ small {
   display: block i !important;
 }
 
-</style>
-
-<script>
-  const starting = document.getElementById("starting");
-const alert1 = document.getElementById("alert-success");
-  starting.addEventListener("click", (event) => {
-    alert1.classList.toggle("show");
-  });
-
-</script>

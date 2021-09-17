@@ -52,17 +52,17 @@ chile.save!
 
 p "creating candidates"
 
-candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", active: true, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
+candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", area_median_wage: "36", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
 candidate1.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate1.save!
 
-candidate2 = User.new(first_name: "Roberto", last_name: "De Vez", email: "alison1@datatog.com", password: "seb1@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 57, current_employer: "Facebook" , status: "passive", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
+candidate2 = User.new(first_name: "Roberto", last_name: "De Vez", email: "alison1@datatog.com", password: "seb1@lewagon.org", area_median_wage: "36", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 57, status: "passive", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
 candidate2.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate2.save!
 
-candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", active: false, area_median_wage: "$USD 36.000", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 47, current_employer: "Facebook" , status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
+candidate3 = User.new(first_name: "Kevin", last_name: "Michel", email: "alison11@datatog.com", password: "seb11@lewagon.org", area_median_wage: "36", next_jobs: "Data scientist, Lead data engineer", city: "Rio de Janeiro(🇧🇷)", job: "Software Engineer", timezone: "BST GMT-3", expected_wage: 47, status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate4.jpg')), filename: 'candidate4.jpg')
 candidate3.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate3.save!
@@ -82,12 +82,14 @@ matching3 = req2.matchings.create(user_id: candidate3.id, level: 3, matching_des
 difference with your HQ in NYC.",  timezone_overlap: 5, status: "available")
 matching3.save!
 
+
+
 p "creating employers"
 
-rappi = Employer.new(name: "Rappi", funding_stage: "Series B", industry: "Fintech", description: "Cornershop is an on-demand grocery delivery service for the Latin American market. Founded simultaneously in Santiago, Chile, and Mexico City in 2015, now operate in 8 countries across the Americas. In July 2020, Uber acquired a majority stake in the company fo $3B+.")
+rappi = Employer.new(name: "Rappi", funding_stage: "Series B", industry: "Fintech", description: "Cornershop is an on-demand grocery delivery service for the Latin American market. Founded simultaneously in Santiago, Chile, and Mexico City in 2015, now operate in 8 countries across the Americas. In July 2020, Uber acquired a majority stake in the company fo $3B+.", challenges: "Anna might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database)")
 rappi.logo.attach(io: File.open(File.join(Rails.root,'app/assets/images/rappi.png')), filename: 'Rappi.png')
 rappi.save!
-fintual = Employer.new(name: "Fintual", funding_stage: "Series B", industry: "Fintech", description: "Cornershop is an on-demand grocery delivery service for the Latin American market. Founded simultaneously in Santiago, Chile, and Mexico City in 2015, now operate in 8 countries across the Americas. In July 2020, Uber acquired a majority stake in the company fo $3B+.")
+fintual = Employer.new(name: "Fintual", funding_stage: "Series B", industry: "Fintech", description: "Cornershop is an on-demand grocery delivery service for the Latin American market. Founded simultaneously in Santiago, Chile, and Mexico City in 2015, now operate in 8 countries across the Americas. In July 2020, Uber acquired a majority stake in the company fo $3B+.", challenges: "Anna might be a good fit for your job req because he is able and willing to learn Python (after 4 years Ruby experience) and has already experience in SQL (database)")
 fintual.logo.attach(io: File.open(File.join(Rails.root,'app/assets/images/fintual.png')), filename: 'Fintual.png')
 fintual.save!
 
@@ -219,6 +221,7 @@ It was a 2 months project in Scrum using Circle CI.")
 experience1.save
 experience2 = candidate1.previous_experiences.create(number: 2, started_at: "May 2018", end_at: "Now", team_size: "35 to 50 (+45%)", fundraising: "$35M - May 2019", employer_id: fintual.id, description: "At Fintual, he built a database using PostgreSQL for 100K users, in a team of 5 engineers. It was a 1 year project.")
 experience2.save
+
 
 #candidate2
 experience3 = candidate2.previous_experiences.create(number: 1, started_at: "May 2018", end_at: "Now", team_size: "35 to 50 (+45%)", fundraising: "$35M - May 2019", employer_id: rappi.id, description: "At Rappi, he developped a real-time notification system using  websockets for 10K users, in a team of 20 engineers.

@@ -10,7 +10,8 @@
         <%= render template: "users/home" %>
       </div>
 
-      <div class="col-7">
+      <div class="col-7" id="centering">
+        <%= cl_image_tag("Group_81_qbdmux", width: 450)%>
       <div class="row">
         <div class="col-6 mapp">
 
@@ -26,6 +27,12 @@
 
 
 <style>
+
+#centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .alert {
   text-align: center;

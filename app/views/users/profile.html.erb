@@ -124,6 +124,10 @@
                     </div>
                   </div>
                   <hr>
+                <div>
+                  <p><b>Challenges <%= @user.first_name %> could have worked on</b></p>
+                  <p><%= experience.employer.challenges %></p>
+                </div>
               </div>
             </div>
           </div>
@@ -145,9 +149,11 @@
     </div>
     <div class="loca">
       <h5 style="font-size: 15px;">Soft skills </h5>
-      <p>🇺🇸 - <%= @user.speaking_languages.first.name %>- <%= @user.user_speaking_languages.first.level %></p>
-      <p>🇪🇸 - <%= @user.speaking_languages.second.name %>- <%= @user.user_speaking_languages.second.level %> (<%= @user.user_speaking_languages.second.country %>)</p>
-      </p>
+        <% @user.user_speaking_languages.each do |user_language| %>
+
+          <p>💬 - <%= user_language.speaking_language.name %> - (<%= user_language.level %>)</p>
+
+        <% end  %>
     </div>
   </div>
 
@@ -600,12 +606,3 @@ small {
 </style>
 
 
-<script>
-
-  const starting = document.getElementById("starting");
-const alert1 = document.getElementById("alert");
-  starting.addEventListener("click", (event) => {
-    alert1.classList.addClass("show");
-  });
-
-</script>
