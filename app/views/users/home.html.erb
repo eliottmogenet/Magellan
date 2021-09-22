@@ -1,5 +1,7 @@
 
-
+<script>
+   window.onload = window.location = '#user<%= @user.id %>';
+</script>
 
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
@@ -31,7 +33,7 @@
                 <%= link_to req_user_path(@req, user) do %>
                   <% if user == @user %>
                     <div class="info actived">
-                      <div class="info">
+                      <div class="info" id="user<%= user.id %>">
                     <div class="photo">
                       <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
                     </div>
@@ -43,7 +45,7 @@
                   </div>
                 </div>
                   <% elsif user != @user  %>
-                  <div class="info" id="power1">
+                  <div class="info" id="user<%= user.id %>" >
                     <div class="photo">
                       <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
                     </div>
@@ -65,7 +67,6 @@
         </div>
 
       <% end %>
-
     </div>
     <div class="tab-pane show <%= ' active' if @match.nil? == false && @match.status == "messaged" %>"  id="pills-current" role="tabpanel" aria-labelledby="pills-pro-tab">
 
@@ -74,29 +75,33 @@
                     <% @req.users.where(:matchings => { :status => "messaged" }).each do |user| %>
                 <%= link_to req_user_path(@req, user) do %>
                   <% if user == @user %>
-                    <div class="info actived">
-                      <div class="info">
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                    </div>
-                    <div class="description">
-                    <p id="name"><%= user.first_name + " " + user.last_name %><p>
-                    <p id= "job"><%= user.job %></p>
-                    <p id="location"><%= user.city %></p>
-                    </div>
-                  </div>
-                </div>
+
+                      <div class="info actived">
+                        <div class="info">
+                          <div class="photo">
+                            <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                          </div>
+                          <div class="description">
+                            <p id="name"><%= user.first_name + " " + user.last_name %><p>
+                            <p id= "job"><%= user.job %></p>
+                            <p id="location"><%= user.city %></p>
+                          </div>
+                        </div>
+                      </div>
+
                   <% elsif user != @user  %>
-                  <div class="info" id="power2">
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+
+                    <div class="info" id="power2">
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                        <div class="description">
+                        <p id="name"><%= user.first_name + " " + user.last_name %><p>
+                        <p id= "job"><%= user.job %></p>
+                        <p id="location"><%= user.city %></p>
+                      </div>
                     </div>
-                    <div class="description">
-                    <p id="name"><%= user.first_name + " " + user.last_name %><p>
-                    <p id= "job"><%= user.job %></p>
-                    <p id="location"><%= user.city %></p>
-                    </div>
-                  </div>
+
                   <% end %>
 
                 <% end %>
@@ -169,6 +174,14 @@
 
 
 </style>
+
+
+
+
+
+
+
+
 
 
 
