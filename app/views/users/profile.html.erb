@@ -79,10 +79,10 @@
       </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
       <div class="loca">
-        <h5 style="font-size: 15px;">Past projects</h5>
+        <h5 style="font-size: 15px;">Current projects</h5>
 
       <% @user.previous_experiences.each_with_index do |experience, index| %>
-        <p style="width: 310px; text-align: justify;"><%= index + 1 %> - <%= experience.description %> </p>
+        <p style="width: 310px; text-align: justify;"><%= experience.description %> </p>
         <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= experience.id %>">
             Learn more about <%= experience.employer.name %> >
         </a>
@@ -119,7 +119,7 @@
                       <p style="color: grey; line-height: 0px"><%= experience.fundraising %></p>
                     </div>
                     <div style="margin-left: 30px">
-                      <p><b>Engineering team 💻 </b></p>
+                      <p><b>Company size 👥 </b></p>
                       <p style="color: grey; line-height: 0px"><%= experience.team_size %></p>
                     </div>
                   </div>
