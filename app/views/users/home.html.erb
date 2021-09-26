@@ -1,9 +1,11 @@
 
 
-
-<script>
+<% if @user != nil %>
+  <script>
   document.getElementById('user<%= @user.id %>').scrollIntoView()
 </script>
+<% end %>
+
 
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
