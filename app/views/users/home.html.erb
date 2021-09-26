@@ -1,5 +1,10 @@
 
 
+
+<script>
+   window.onload = window.location = '#user<%= @user.id %>';
+</script>
+
 <div class="head-candidates" style="padding-top: 26px;">
   <h3>Weekly inbox</h3>
   <p><b><%= @req.users.where(:matchings => {:status => "available" }).count %></b><%= + " " + @req.title.downcase%> this week</p>
@@ -171,7 +176,6 @@
 
 
 </style>
-
 
 
 
