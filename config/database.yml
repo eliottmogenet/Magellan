@@ -78,12 +78,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-staging:
- url: <%= ENV[‘DATABASE_URL’] %>
-
 production:
   <<: *default
   database: Magellan_production
   username: Magellan
   password: <%= ENV['MAGELLAN_DATABASE_PASSWORD'] %>
-  url: <%= ENV[‘DATABASE_URL’] %>
