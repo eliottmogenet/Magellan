@@ -15,10 +15,27 @@ class ReqsController < ApplicationController
     @customer = current_user.customer
   end
 
+
+  def new
+    @req = Req.new
+  end
+
+  def create
+    @req = Req.new(params_req)
+    @req.save!
+  end
+
+
   def archive
     @user = User.find(params[:id])
     @req = Req.find(params[:req_id])
     @match = @user.matchings.where(req_id: @req.id)
     @match.update(status: "archived")
   end
+
+private
+
+    def params_req
+      params.require(:req).permit(:customer_id, :title)
+    end
 end
