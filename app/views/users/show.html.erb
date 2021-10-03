@@ -15,7 +15,9 @@
       <div class="col-7">
       <div class="row">
         <div class="col-6 mapp">
+            <% if @user.map.attached? %>
               <%= cl_image_tag @user.map.key, height:750, width: 395 %>
+            <% end %>
         </div>
         <div class="col-6 profile" style="background-color: #FFFFFF">
             <%= render template: "users/profile" %>

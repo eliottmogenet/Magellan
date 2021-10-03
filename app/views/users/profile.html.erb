@@ -7,7 +7,9 @@
     <div class="profile-info">
                   <div>
                     <% if @user.photo.attached? %>
-                      <%= cl_image_tag @user.photo.key, width: 60, height: 60 %>
+                        <%= cl_image_tag @user.photo.key, width: 60, height: 60 %>
+                      <% else %>
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 60, height: 60) %>
                     <% end %>
                   </div>
                 <div class="info-pro">

@@ -22,8 +22,10 @@
     <%= f.association :customer,
     hint: ("only for recruiters")%>
     <%= f.input :timezone %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :map, as: :file %>
+    <%= f.input :photo, as: :file,
+                required: true %>
+    <%= f.input :map, as: :file,
+                required: true %>
     <%= f.input :job,
                 required: true %>
     <%= f.input :city,

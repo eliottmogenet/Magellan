@@ -42,6 +42,10 @@
                       <div class="photo">
                         <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
                       </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
+                      </div>
                     <% end %>
                     <div class="description">
                     <p id="name"><%= user.first_name + " " + user.last_name %><p>
@@ -55,6 +59,10 @@
                     <% if user.photo.attached? %>
                       <div class="photo">
                         <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
                       </div>
                     <% end %>
                     <div class="description">
@@ -86,9 +94,15 @@
 
                       <div class="info actived">
                         <div class="info">
-                          <div class="photo">
-                            <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                          </div>
+                        <% if user.photo.attached? %>
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
+                      </div>
+                    <% end %>
                           <div class="description">
                             <p id="name"><%= user.first_name + " " + user.last_name %><p>
                             <p id= "job"><%= user.job %></p>
@@ -100,9 +114,15 @@
                   <% elsif user != @user  %>
 
                     <div class="info" id="power2">
+                    <% if user.photo.attached? %>
                       <div class="photo">
                         <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
                       </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
+                      </div>
+                    <% end %>
                         <div class="description">
                         <p id="name"><%= user.first_name + " " + user.last_name %><p>
                         <p id= "job"><%= user.job %></p>
@@ -131,9 +151,15 @@
                   <% if user == @user %>
                     <div class="info actived">
                       <div class="info">
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                    </div>
+                    <% if user.photo.attached? %>
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
+                      </div>
+                    <% end %>
                     <div class="description">
                     <p id="name"><%= user.first_name + " " + user.last_name %><p>
                     <p id= "job"><%= user.job %></p>
@@ -143,9 +169,15 @@
                 </div>
                   <% elsif user != @user  %>
                   <div class="info" id="power3">
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                    </div>
+                    <% if user.photo.attached? %>
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                      <% else %>
+                      <div class="photo">
+                        <%= cl_image_tag("karel_lizzagara_asv5ta", width: 55, height: 55) %>
+                      </div>
+                    <% end %>
                     <div class="description">
                     <p id="name"><%= user.first_name + " " + user.last_name %><p>
                     <p id= "job"><%= user.job %></p>
