@@ -6,7 +6,9 @@
   <div class="id-info">
     <div class="profile-info">
                   <div>
-                    <%= cl_image_tag @user.photo.key, width: 60, height: 60 %>
+                    <% if @user.photo.attached? %>
+                      <%= cl_image_tag @user.photo.key, width: 60, height: 60 %>
+                    <% end %>
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
@@ -209,9 +211,11 @@
       <div class="mod-title">
         <h5 class="modal-title" id="exampleModalLongTitle">Send a message <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
           <p>Start a conversation with <%= @user.first_name %>.</p>
-      <div style="margin-top: 5px">
-      <%= cl_image_tag @user.photo.key, height: 35, width: 35 %>
-    </div>
+        <% if @user.photo.attached? %>
+            <div style="margin-top: 5px">
+              <%= cl_image_tag @user.photo.key, height: 35, width: 35 %>
+            </div>
+        <% end  %>
       </div>
       <div class="modal-body">
         <%= simple_form_for @match, url: req_user_path(@req, @user) do |f| %>

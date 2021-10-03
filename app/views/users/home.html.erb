@@ -38,9 +38,11 @@
                   <% if user == @user %>
                     <div class="info actived">
                       <div class="info" id="user<%= user.id %>">
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                    </div>
+                    <% if user.photo.attached? %>
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                    <% end %>
                     <div class="description">
                     <p id="name"><%= user.first_name + " " + user.last_name %><p>
                     <p id= "job"><%= user.job %></p>
@@ -50,9 +52,11 @@
                 </div>
                   <% elsif user != @user  %>
                   <div class="info" id="user<%= user.id %>" >
-                    <div class="photo">
-                      <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
-                    </div>
+                    <% if user.photo.attached? %>
+                      <div class="photo">
+                        <%= cl_image_tag user.photo.key, width: 55, height: 55 %>
+                      </div>
+                    <% end %>
                     <div class="description">
                     <p id="name"><%= user.first_name + " " + user.last_name %><p>
                     <p id= "job"><%= user.job %></p>
