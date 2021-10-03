@@ -1,6 +1,6 @@
 class Matching < ApplicationRecord
 
-  STATUS = ['waiting', 'disclosed', 'contacted', 'archived', 'time_out']
+  STATUS = ['waiting', 'available', 'contacted', 'archived', 'time_out']
 
   belongs_to :user
   belongs_to :req
