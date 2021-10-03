@@ -27,6 +27,6 @@ class ApplicationController < ActionController::Base
   end
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :job, :expected_wage, :city, :status, :linkedin_profile, :full_remote_only, :country_id, :area_median_wage, :university, :photo, :map, :next_jobs])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :job, :expected_wage, :city, :status, :linkedin_profile, :full_remote_only, :country_id, :area_median_wage, :university, :photo, :map, :next_jobs, :timezone])
   end
 end
