@@ -19,7 +19,7 @@
     <a class="nav-link <%= ' active' if @match.nil? == false && @match.status == "available" %>" id="pills-contact-tab" data-toggle="pill" href="#pills-new" role="tab" aria-controls="pills-home" aria-selected="true">New(<%= @req.users.where(:matchings => {:status => "available" }).count %>)</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link <%= ' active' if @match.nil? == false && @match.status == "messaged"  %>" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Started(<%= @req.users.where(:matchings => { :status => "messaged" }).count %>)</a>
+    <a class="nav-link <%= ' active' if @match.nil? == false && @match.status == "messaged"  %>" id="pills-contact-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-profile" aria-selected="false">Messaged(<%= @req.users.where(:matchings => { :status => "messaged" }).count %>)</a>
   </li>
   <li class="nav-item">
     <a class="nav-link <%= ' active' if @match.nil? == false && @match.status == "archived"  %>" id="pills-contact-tab" data-toggle="pill" href="#pills-archived" role="tab" aria-controls="pills-contact" aria-selected="false">Archived(<%= @req.users.where(:matchings => { :status => "archived" }).count %>)</a>
