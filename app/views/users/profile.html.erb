@@ -1,7 +1,6 @@
 
 
 
-
 <div class="propro">
   <div class="id-info">
     <div class="profile-info">
@@ -14,7 +13,7 @@
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
-                    <p><%= @user.job %></p>
+                    <p><%= @user.job %> <%= @user.competitive_profile %></p>
                     <p id="loc"><%= @user.city + " "%>
                   <% if @user.github_profile != nil %>
                     <%= link_to @user.github_profile, target: :_blank do %>
@@ -85,15 +84,122 @@
       </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
       <div class="loca">
-        <h5 style="font-size: 15px;">Current projects</h5>
+        <h5 style="font-size: 15px;">Current experience</h5>
 
-      <% @user.previous_experiences.each_with_index do |experience, index| %>
-        <p style="width: 310px; text-align: justify;"><%= experience.description %> </p>
-        <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= experience.id %>">
-            Learn more about <%= experience.employer.name %> >
+          <% if @user.previous_experiences.first.employed_more_than_one_year == true  %>
+            <div class="comment1">
+              <p>Employed > 12 months</p>
+            </div>
+          <% end %>
+
+      <% if @user.previous_experiences.empty? %>
+
+      <% else %>
+
+                <p style="width: 310px; text-align: justify;"><%= @user.previous_experiences.first.description %> </p>
+        <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= @user.previous_experiences.first.id %>">
+            Learn more about <%= @user.previous_experiences.first.employer.name %> >
         </a>
 
-          <div class="modal fade" id="modal-<%= experience.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal fade" id="modal-<%= @user.previous_experiences.first.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="title-company">
+                    <div>
+                      <%= cl_image_tag @user.previous_experiences.first.employer.logo.key, width: 60, height: 60 %>
+                    </div>
+                    <div style="margin-left: 20px">
+                      <h3><%= @user.previous_experiences.first.employer.name %></h3>
+                      <div class="title-company">
+                        <div class="stack-disc" style="background-color: #EDEAFA"><p style="color: black"><%= @user.previous_experiences.first.employer.industry %></p></div>
+                        <div class="stack-disc" style="background-color: #EDEAFA"><p style="color: black"><%= @user.previous_experiences.first.employer.funding_stage %></p></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="margin-top: 10px;">
+                    <p><%= @user.previous_experiences.first.employer.description %></p>
+                    <hr>
+                  </div>
+                  <div class="title-company">
+                    <div>
+                      <%= cl_image_tag @user.photo.key, width: 40, height: 40 %>
+                    </div>
+                    <div style="margin-left: 20px">
+                      <p><b><%= @user.first_name %> at <%= @user.previous_experiences.first.employer.name %></b></p>
+                      <p style="color: grey;  line-height: 0px"><%= @user.previous_experiences.first.started_at %> - <%= @user.previous_experiences.first.end_at %></p>
+                    </div>
+                    <div style="margin-left: 30px">
+                      <p><b>Fundraisings 💸 </b></p>
+                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.fundraising %></p>
+                    </div>
+                    <div style="margin-left: 30px">
+                      <p><b>Company size 👥 </b></p>
+                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.team_size %></p>
+                    </div>
+                  </div>
+                  <hr>
+              </div>
+            </div>
+          </div>
+
+      <% end %>
+              <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
+
+
+    <div>
+      <h5 style="font-size: 15px;">Previous companies </h5>
+            <% @user.previous_experiences.each do |experience| %>
+
+      <div class="resume">
+        <% if experience.small_team_xp == true  %>
+          <div class="comment2">
+            <p>Start-up XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.scale_up_xp == true  %>
+          <div class="comment2">
+            <p>Scale-up XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.us_company_xp == true  %>
+          <div class="comment3">
+            <p>US Company XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.b2c == true  %>
+          <div class="comment3">
+            <p>B2C Customers</p>
+          </div>
+        <% end %>
+
+        <% if experience.smb_customers == true  %>
+          <div class="comment3">
+            <p>SMB Customers</p>
+          </div>
+        <% end %>
+
+        <% if experience.entreprise_customers == true  %>
+          <div class="comment1">
+            <p>Entreprise customers</p>
+          </div>
+        <% end %>
+
+
+      </div>
+    <% end %>
+
+
+
+      <% @user.previous_experiences.drop(1).each do |experience| %>
+
+         <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= experience.id %>">
+          <%= cl_image_tag experience.employer.logo.key, width: 40, height: 40, style: 'margin-left: 10px;' %>
+        </a>
+
+            <div class="modal fade" id="modal-<%= experience.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                   <div class="title-company">
@@ -134,23 +240,50 @@
             </div>
           </div>
 
-        <div class="staks">
-        <% experience.experience_comments.each do |analysis| %>
-          <div class="comment">
-            <p style="color: white; font-size: 9px"><%= analysis.comment %></p>
+      <% end %>
+    </div>
+         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
+    </div>
+    <div class="loca">
+      <h5 style="font-size: 15px;">Architecture</h5>
+
+      <% @user.previous_experiences.each do |experience| %>
+
+      <div class="resume">
+        <% if experience.microservices == true  %>
+          <div class="comment3">
+            <p>Microservices</p>
+          </div>
+        <% end %>
+        <% if experience.high_volume_data == true  %>
+          <div class="comment3">
+            <p>High-volume data</p>
           </div>
         <% end %>
       </div>
-        <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
-  <% end %>
+    <% end %>
+
+    <p>detail of infrastructure</p>
 
     </div>
+      <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
+
+
+    <div class="loca">
+      <h5 style="font-size: 15px;">DevOps & Team</h5>
+            <% @user.previous_experiences.each do |experience| %>
+            <% end %>
+      <p>detail of devOps</p>
+
+    </div>
+      <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
+
     <div class="loca">
       <h5 style="font-size: 15px;">University</h5>
       <p><%= @user.university %>
     </div>
     <div class="loca">
-      <h5 style="font-size: 15px;">Soft skills </h5>
+      <h5 style="font-size: 15px;">Languages  </h5>
         <% @user.user_speaking_languages.each do |user_language| %>
 
           <p>💬 - <%= user_language.speaking_language.name %> - (<%= user_language.level %>)</p>
@@ -247,6 +380,45 @@
 
 
 <style>
+
+.resume {
+  display: flex;
+  justify-content: start;
+}
+
+.comment1 p {
+  color: white;
+  width: 125px;
+  height: 25px;
+  background-color: #80CFA9;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.comment2 p {
+  color: white;
+  width: 75px;
+  height: 25px;
+  background-color: #80CFA9;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  margin-right: 5px
+}
+
+.comment3 p {
+  color: white;
+  width: 90px;
+  height: 25px;
+  background-color: #80CFA9;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  margin-right: 5px
+}
+
 
 
 .row {
@@ -405,7 +577,7 @@ h5 {
   display: block;
   text-align: center;
   vertical-align: middle;
-  border-radius: 10px;
+  border-radius: 5px !important;
   width: 100px;
   height: 30px;
   line-height: 30px;
@@ -562,7 +734,7 @@ small {
   margin-left: 30px;
   margin-right: 30px;
   background-color: #F0F0F1;
-  border-radius: 10px;
+  border-radius: 5px;
   height: 130px;
 }
 
@@ -578,7 +750,7 @@ small {
   display: block;
   text-align: center;
   vertical-align: middle;
-  border-radius: 10px;
+  border-radius: 5px !important;
   width: 140px;
   height: 30px;
   line-height: 30px;
@@ -595,7 +767,7 @@ small {
   display: block;
   text-align: center;
   vertical-align: middle;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 70px;
   height: 30px;
   line-height: 30px;

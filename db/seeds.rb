@@ -52,7 +52,7 @@ chile.save!
 
 p "creating candidates"
 
-candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", email: "alison@datatog.com", password: "seb@lewagon.org", area_median_wage: "36", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
+candidate1 = User.new(first_name: "Anna", last_name: "Sanchez", competitive_profile: "Very competitive profile", email: "alison@datatog.com", password: "seb@lewagon.org", area_median_wage: "36", next_jobs: "Data scientist, Lead data engineer", city: "Buenos-Aires(🇦🇷)", job: "Data scientist", timezone: "BST GMT-3", expected_wage: 67, status: "active", university: "Engineering at University of Chile (1st university Chile)", relocation_possible: true, full_remote_only: true, contractor_possible: true, country_id: chile.id)
 candidate1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/candidate1.jpg')), filename: 'candidate1.jpg')
 candidate1.map.attach(io: File.open(File.join(Rails.root,'app/assets/images/map.png')), filename: 'map.png')
 candidate1.save!
@@ -217,7 +217,7 @@ p "creating previous experiences per candidates"
 
 #candidate1
 experience1 = candidate1.previous_experiences.create(number: 1, started_at: "May 2018", end_at: "Now", team_size: "35 to 50 (+45%)", fundraising: "$35M - May 2019", employer_id: rappi.id, description: "At Rappi, he developped a real-time notification system using  websockets for 10K users, in a team of 20 engineers.
-It was a 2 months project in Scrum using Circle CI.")
+It was a 2 months project in Scrum using Circle CI.", employed_more_than_one_year: true, us_company_xp: true, b2c: true, small_team_xp: true, scale_up_xp: true, microservices: true)
 experience1.save
 experience2 = candidate1.previous_experiences.create(number: 2, started_at: "May 2018", end_at: "Now", team_size: "35 to 50 (+45%)", fundraising: "$35M - May 2019", employer_id: fintual.id, description: "At Fintual, he built a database using PostgreSQL for 100K users, in a team of 5 engineers. It was a 1 year project.")
 experience2.save

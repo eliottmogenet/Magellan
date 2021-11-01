@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 end
 
   root to: 'pages#home'
+  get 'story', to: 'pages#story', as: :story
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :user_stacks
   resources :customers

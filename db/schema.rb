@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_215532) do
+ActiveRecord::Schema.define(version: 2021_10_23_201232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,15 @@ ActiveRecord::Schema.define(version: 2021_09_16_215532) do
     t.string "end_at"
     t.string "team_size"
     t.string "fundraising"
+    t.boolean "employed_more_than_one_year"
+    t.boolean "us_company_xp"
+    t.boolean "b2c"
+    t.boolean "smb_customers"
+    t.boolean "entreprise_customers"
+    t.boolean "microservices"
+    t.boolean "high_volume_data"
+    t.boolean "small_team_xp"
+    t.boolean "scale_up_xp"
     t.index ["employer_id"], name: "index_previous_experiences_on_employer_id"
     t.index ["user_id"], name: "index_previous_experiences_on_user_id"
   end
@@ -188,6 +197,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_215532) do
     t.boolean "relocation_possible", default: false
     t.string "next_jobs"
     t.string "area_median_wage"
+    t.text "competitive_profile"
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true
