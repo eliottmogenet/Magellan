@@ -13,7 +13,7 @@
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
-                    <p><%= @user.job %></p>
+                    <p><%= @user.job %> </p>
                     <p id="loc"><%= @user.city + " "%>
                   <% if @user.github_profile != nil %>
                     <%= link_to @user.github_profile, target: :_blank do %>
@@ -86,11 +86,6 @@
       <div class="loca">
         <h5 style="font-size: 15px;">Current experience</h5>
 
-          <% if @user.previous_experiences.first.employed_more_than_one_year == true  %>
-            <div class="comment1">
-              <p>Employed > 12 months</p>
-            </div>
-          <% end %>
 
       <% if @user.previous_experiences.empty? %>
 
@@ -247,23 +242,6 @@
     <div class="loca">
       <h5 style="font-size: 15px;">Architecture</h5>
 
-      <% @user.previous_experiences.each do |experience| %>
-
-      <div class="resume">
-        <% if experience.microservices == true  %>
-          <div class="comment3">
-            <p>Microservices</p>
-          </div>
-        <% end %>
-        <% if experience.high_volume_data == true  %>
-          <div class="comment3">
-            <p>High-volume data</p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-
-    <p>detail of infrastructure</p>
 
     </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
@@ -273,7 +251,7 @@
       <h5 style="font-size: 15px;">DevOps & Team</h5>
             <% @user.previous_experiences.each do |experience| %>
             <% end %>
-      <p>detail of devOps</p>
+
 
     </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
