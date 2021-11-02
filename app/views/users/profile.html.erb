@@ -143,48 +143,7 @@
 
     <div>
       <h5 style="font-size: 15px;">Previous companies </h5>
-            <% @user.previous_experiences.each do |experience| %>
 
-      <div class="resume">
-        <% if experience.small_team_xp == true  %>
-          <div class="comment2">
-            <p>Start-up XP</p>
-          </div>
-        <% end %>
-
-        <% if experience.scale_up_xp == true  %>
-          <div class="comment2">
-            <p>Scale-up XP</p>
-          </div>
-        <% end %>
-
-        <% if experience.us_company_xp == true  %>
-          <div class="comment3">
-            <p>US Company XP</p>
-          </div>
-        <% end %>
-
-        <% if experience.b2c == true  %>
-          <div class="comment3">
-            <p>B2C Customers</p>
-          </div>
-        <% end %>
-
-        <% if experience.smb_customers == true  %>
-          <div class="comment3">
-            <p>SMB Customers</p>
-          </div>
-        <% end %>
-
-        <% if experience.entreprise_customers == true  %>
-          <div class="comment1">
-            <p>Entreprise customers</p>
-          </div>
-        <% end %>
-
-
-      </div>
-    <% end %>
 
 
 
