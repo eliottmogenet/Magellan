@@ -54,6 +54,7 @@
     </div>
   </section>
 
+<section class="section3">
   <div class="container">
     <div class="row" id="row-center">
       <div class="col-sm-12 col-lg-5">
@@ -113,25 +114,31 @@
       </div>
     </div>
   </div>
+</section>
 
-  <section>
-  <div class="props">
-        <div class="value-pro">
-          <h2>⏳ <br> Save time sourcing </h2>
-          <p>Save hours browsing irrelevant LinkedIn profiles. Get qualified talent for your positions weekly.</p>
-        </div>
-        <div class="value-pro">
-          <h2>🌏 <br> Increase diversity  </h2>
-          <p>Build an inclusive global workforce that raises your quality bar. </p>
-        </div>
-        <div class="value-pro">
-          <h2>🎯 <br> Build your strategy</h2>
-          <p>Choose where you want to hire and build a global data driven talent strategy. </p>
+<section id="section4">
+    <div class="container">
+      <div class="row" class="row-footer">
+        <div class="props" style="margin-top: 100px">
+          <div class="value-pro">
+            <h2>⏳ <br> Save time sourcing </h2>
+            <p>Save hours browsing irrelevant LinkedIn profiles. Get qualified talent for your positions weekly.</p>
+          </div>
+          <div class="value-pro">
+            <h2>🌏 <br> Increase diversity  </h2>
+            <p>Build an inclusive global workforce that raises your quality bar. </p>
+          </div>
+          <div class="value-pro">
+            <h2>🎯 <br> Build your strategy</h2>
+            <p>Choose where you want to hire and build a global data driven talent strategy. </p>
+          </div>
         </div>
       </div>
-  </section>
+  </div>
+</section>
 
-  <div class="container">
+<section>
+  <div class="container" id="fooot">
       <%= cl_image_tag("Group_34_4_1_bblh3t", width: 160, height: 83, id: "sun") %>
       <div class="row" id="row-footer">
       <div class="faq">
@@ -205,15 +212,17 @@ As a recruiter, you can now source in new talent markets and multiple timezones.
       </div>
     </div>
   </div>
-  <section class="end">
-    <p style="padding-top: 150px">@Magellan 2021</p>
-  </section>
+</section>
+
+<section class="end">
+  <p style="padding-top: 150px">@Magellan 2021</p>
+</section>
+
 
 
 </body>
 
 <style>
-
 
 
 span {
@@ -224,6 +233,14 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+.row-other {
+  margin-top: -200px;
+}
+
+#foot {
+  margin-top: 100px;
 }
 
 #vision {
@@ -255,11 +272,16 @@ header {
   margin-top: 100px;
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 body {
   background-color: white;
   height: 100%;
+}
+
+.container {
+  width: 100%;
 }
 
 p {
@@ -424,11 +446,10 @@ header p {
 
 
 .props {
-  margin-top: 8%;
   display: flex;
   justify-content: center;
   margin-left: 40px;
-  margin-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .value-pro {
@@ -452,9 +473,7 @@ header p {
   background-color: #090131;
   color: white;
   text-align: center;
-  margin-top: -10%;
-
-
+  margin-top: -20%;
 }
 
 h6 {
@@ -544,6 +563,14 @@ h6 {
 
 #section2 {
   background-color: #F7FBFF;
+  margin-top:-150px;
+  padding-top: 160px;
+  padding-bottom: 60px;
+
+}
+
+#section3 {
+  position: absolute;
   margin-top:-150px;
   padding-top: 160px;
   padding-bottom: 60px;
