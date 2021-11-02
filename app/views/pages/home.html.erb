@@ -142,7 +142,9 @@ As a recruiter, you can now source in new talent markets and multiple timezones.
 <br> <br> But where do you start ? How do you map talent abroad?
 <br> <br> Magellan is a Saas tool to help you hit your hiring goals faster with endless global options. We equip in-house teams with the local context they need to qualify talent and offer competitive compensation to close top talent. Skip the market research and benchmarking. Source International talent with confidence. </p>
         <%= cl_image_tag("Line_127_ewfl3c", width: 305, height: 1) %> <br><br>
-      <a href="https://form.typeform.com/to/forziHpt" class="choice" id="choice2">Request Access ></a>
+    <div class="buttonn">
+      <a href="https://form.typeform.com/to/forziHpt" class="choice" id="choice2">Request Access ></a><a href="https://medium.com/@eliottmogenet/remote-is-eating-the-world-launching-magellan-410728ea57bc" id="vision" target="blank">Discover our vision</a>
+    </div>
         </div>
       <div class="col-sm-12 col-lg-6" id="sun">
         <h2 style="margin-bottom: 70px">FAQ</h2>
@@ -212,6 +214,8 @@ As a recruiter, you can now source in new talent markets and multiple timezones.
 
 <style>
 
+
+
 span {
   color: #4175FE;
 }
@@ -220,6 +224,13 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 10px;
+}
+
+#vision {
+  color: black;
+  font-weight: bold;
+  margin-left: 10px;
+  text-decoration: none;
 }
 
 .sub-tab {
@@ -277,10 +288,20 @@ header p {
 
 @media(max-width: 450px) {
 
+
+    .buttonn {
+      display: flex;
+      justify-content: center;
+    }
+
+    #vision {
+       margin-top: -15px;
+    }
+
     #choice2 {
       margin-top: -25px;
-
     }
+
 
     .test6 {
       display: none;
