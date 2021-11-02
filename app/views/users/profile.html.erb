@@ -13,7 +13,7 @@
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
-                    <p><%= @user.job %> <%= @user.competitive_profile %></p>
+                    <p><%= @user.job %></p>
                     <p id="loc"><%= @user.city + " "%>
                   <% if @user.github_profile != nil %>
                     <%= link_to @user.github_profile, target: :_blank do %>

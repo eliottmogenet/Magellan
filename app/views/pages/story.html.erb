@@ -1,3 +1,4 @@
+
 <body>
     <section>
     <div class="container">
@@ -20,42 +21,51 @@
       <div class="row-part1" style="margin-top: 50px; margin-bottom: 300px">
         <div class="texti">
           <h1 id="title1">Remote is eating <br> the world.</h1>
-          <p style="margin-top: 20px">Before Magellan, finding the right talent abroad was costly, time-consuming and
-involved unecessary cultural bias. We made it simple by automating your talent search in minutes.</p>
+          <p style="margin-top: 20px">We are on a mission to help every company build distributed teams by themselves, all over the world.</p>
         </div>
       </div>
     </div>
   </section>
-
- <%= cl_image_tag("Group_35_2_1_saozhl", width: 160, height: 92, style: "margin-left: 650px; margin-top: -365px") %>
+ <%= cl_image_tag("Group_35_2_1_saozhl", width: 160, height: 92, id: "sun", style: "margin-left: 650px; margin-top: -365px") %>
 <section id="section2">
-      <div class="row-part2" id="part2">
-        <div class="col-sm-12 col-lg-7">
-          <div id="medium-widget">
-          </div>
+      <div class="row" id="part2">
+        <div class="col-sm-12 col-lg-7" id="reducing">
+          <%= link_to "https://medium.com/@eliottmogenet/remote-is-eating-the-world-launching-magellan-410728ea57bc", target: :blank do %>
+           <%= cl_image_tag("photo_d7op09", width: 600, id: "pho") %>
+          <% end %>
         </div>
-        <div class="col-sm-12 col-lg-5">
-          <p>Before Magellan, finding the right talent abroad was costly, time-consuming and
-          involved unecessary cultural bias. We made it simple by automating your talent search in minutes.</p>
+        <div class="col-sm-12 col-lg-5" id="texto">
+          <h2>Remote is eating the world - launching Magellan</h2>
+          <br>
+          <p>In 2011, Marc Andressen declared  “software is eating the world”. Ten years later, software companies have dominated every industry and transformed  how we work and live.</p>
+          <p>While the software revolution reshaped our world in ten years, remote work took only one.</p>
+          <a href="https://medium.com/@eliottmogenet/remote-is-eating-the-world-launching-magellan-410728ea57bc" target="blank">Read more on Medium <i class="fab fa-medium"></i></a>
         </div>
     </div>
   </section>
-
+  <section class="foot">
+    <p>@Magellan 2021</p>
+  </section>
 
 </body>
 
-<footer>
-
-</footer>
-
-    <script src="https://medium-widget.pixelpoint.io/widget.js"></script>
-    <script>MediumWidget.Init({renderTo: '#medium-widget', params: {"resource":"https://medium.com/@eliottmogenet/pourquoi-jai-lanc%C3%A9-ma-start-up-%C3%A0-20-ans-e9ef3e6973d2","postsPerLine":2,"limit":4,"picture":"big","fields":["description","author","claps","publishAt"],"ratio":"landscape"}})</script>
 
 
 <style>
 
 span {
   color: #4175FE;
+}
+
+.foot {
+  background-color: #090131;
+  height: 100px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+#pho {
+  margin-left: 150px;
 }
 
 header {
@@ -122,7 +132,32 @@ header p {
   display: none;
 }
 
+#part2 {
+  height: 400px;
+}
+
 @media(max-width: 450px) {
+
+    #texto {
+      margin-left: 5%;
+    }
+
+    #part2 {
+      display: flex;
+      justify-content: center;
+    }
+
+
+    #pho {
+      width: 350px;
+      height: auto;
+      margin-left: 5%;
+    }
+
+    #sun {
+      display: none;
+    }
+
     .value-pro {
       display: none;
     }
