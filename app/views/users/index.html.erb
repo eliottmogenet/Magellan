@@ -1,32 +1,90 @@
+
+
 <body>
   <div class="row">
-
-
-      <div class="col-2" style="background-color: #090131">
+      <div class="col-2" id="spe1" style="background-color: #090131">
         <%= render template: "reqs/show" %>
+
       </div>
-
-      <div class="col-3" style="background-color: #FFFFFF">
-        <%= render template: "users/home" %>
+      <div class="col-3" id="special">
+        <div id=slidebar>
+          <%= render template: "users/home" %>
+        </div>
       </div>
+      <div class="col-7" id="map-biz">
+        <%= cl_image_tag("Group_101_1_1_2_jlnjdy", height: 626) %>
 
-      <div class="col-7" id="centering">
-        <%= cl_image_tag("Group_81_qbdmux", width: 450)%>
-      <div class="row">
-        <div class="col-6 mapp">
-
+        <div class="notif" id="notif-chile" style="margin-right: 550px; margin-top: 320px">
+          <p><%= Matching.count %></p>
         </div>
 
-      </div>
 
       </div>
-  </div>
+    </div>
 </body>
 
 
 
 
 <style>
+
+.notif {
+  position: absolute;
+  background-color: #F49B9B;
+  border-radius: 200px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+.notif p {
+  margin: 0px;
+  font-size: 10px;
+}
+
+#map-biz {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 0px;
+
+}
+
+
+#spe1 {
+  z-index: 3;
+}
+
+
+#special {
+  padding-left: 0px;
+}
+
+#slidebar {
+    padding-left: 15px;
+    height: 100%;
+    width: 100%;
+    margin:none;
+    background-color: #FFFFFF;
+    float:left;
+    z-index: 2;
+
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+
+
+@keyframes slidein {
+    from {
+        margin-left: -150%;
+    }
+    to {
+        margin-left: -3%;
+    }
+}
 
 
 .row {
@@ -239,4 +297,7 @@ const alert1 = document.getElementById("alert-success");
     alert1.classList.toggle("show");
   });
 
+
+
 </script>
+

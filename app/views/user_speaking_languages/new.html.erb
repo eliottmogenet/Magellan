@@ -1,0 +1,52 @@
+<%= simple_form_for @user_speaking_language do |f| %>
+        <%= f.association :speaking_language %>
+        <%= f.association :user, :label_method => lambda { |user| "#{user.first_name} #{user.last_name}" } %>
+        <%= f.input :level %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>
+
+
+<style>
+
+.intput p {
+  color: black;
+}
+
+.center {
+  text-align: center;
+}
+
+ .form-actions {
+  text-align: center;
+ }
+
+
+.choice {
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+  .login {
+    width: 800px;
+
+  }
+
+  body {
+    background-color: #090131;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+  }
+
+</style>

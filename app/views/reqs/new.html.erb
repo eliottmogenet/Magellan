@@ -1,36 +1,593 @@
 
 
 
-<%= simple_form_for @req do |f| %>
-        <%= f.input :title %>
-        <%= f.association :customer %>
-  <%= f.button :submit, class: "btn-primary" %>
-<% end %>
+<body>
+  <div class="row" id="total">
 
+      <div id="slidebar">
+        <textarea class="reqtitle" id="title" type="h1" placeholder="Req name"></textarea>
+        <a href="#" id="connecc">Connect to Greenhouse <%= cl_image_tag("greenhouse-logo-freelogovectors_1_trqck6", width: 20, height: 20) %></a>
+        <hr>
+        <h5 style="font-size: 15px; margin-left: 30px">Profile</h5>
+        <p style="font-size: 10px; margin-left: 30px">Profile type <select id="number_select">
+                          <option value="1"> Backend </option>
+                          <option value="2"> Frontend </option>
+                          <option value="3"> Fullstack </option>
+                          <option value="3"> Data </option>
+                          <option value="3"> Mobile </option>
+                          <option value="3"> DevOps </option></select></p>
+        <p style="font-size: 10px; margin-left: 30px">Profile experience: <select id="number_select">
+                          <option value="1"> +2 years xp </option>
+                          <option value="2"> +3 years xp </option>
+                          <option value="3"> +4 years xp </option>
+                          <option value="3"> +5 years xp </option>
+                          <option value="3"> +6 years xp </option>
+                          <option value="3"> +7 years xp </option></select></p>
+        <div class="agnosticc">
+          <div><p id="connecc">Backend agnostic ⚙️</p></div>
+          <div><p id="connecc">Frontend agnostic 🎨</p></div>
+        </div>
+        <hr>
+        <h5 style="font-size: 15px; margin-left: 30px">Technology</h5>
+        <p style="font-size: 10px; margin-left: 30px" >Technology : <input list="europe-countries" placeholder="Type a language" id="agnosticcc">
+                          <datalist id="europe-countries">
+                            <option>Python</option>
+                            <option>Scala</option>
+                            <option>Ruby</option>
+                            <option>Java</option>
+                            <option>Node.js</option>
+                            <option>React.js</option>
+                            <option>PHP</option>
+                            <option>Kotlin</option>
+                          </datalist>
+
+        <br> <b> <select name="" id="">
+          <option value="">AND</option>
+          <option value="">OR</option>
+        </select></b>
+
+
+        <input list="europe-countries" placeholder="Type a language" id="agnosticcc">
+                          <datalist id="europe-countries">
+                            <option>Python</option>
+                            <option>Scala</option>
+                            <option>Ruby</option>
+                            <option>Java</option>
+                            <option>Node.js</option>
+                            <option>React.js</option>
+                            <option>PHP</option>
+                            <option>Kotlin</option>
+                          </datalist>
+
+        <br> <b> <select name="" id="">
+          <option value="">AND</option>
+          <option value="">OR</option>
+        </select></b>
+
+
+        <input list="europe-countries" placeholder="Type a language" id="agnosticcc">
+                          <datalist id="europe-countries">
+                            <option>Python</option>
+                            <option>Scala</option>
+                            <option>Ruby</option>
+                            <option>Java</option>
+                            <option>Node.js</option>
+                            <option>React.js</option>
+                            <option>PHP</option>
+                            <option>Kotlin</option>
+                          </datalist>
+        </p>
+
+            <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Operating role</label>
+            <input type="checkbox" id="cbox2" value="second_checkbox"> <label for="cbox2">Managing role</label>
+      <hr>
+      <h5 style="font-size: 15px; margin-left: 30px">Background</h5>
+
+      <div>
+      <div><p id="connecc">Industry agnostic 🎳</p></div>
+      <p style="font-size: 10px; margin-left: 30px">Prefered industry : <input list="industry" placeholder="Type an industry" id="agnosticcc">
+                          <datalist id="industry">
+                            <option>Fintech</option>
+                            <option>Saas</option>
+                            <option>E-commerce</option>
+                            <option>AdTech</option>
+                            <option>Insurtech</option>
+                            <option>Education</option>
+                          </datalist></p>
+
+
+
+      <p style="font-size: 10px; margin-left: 30px">Profiles worked in a <select id="number_select">
+                          <option value="1"> 0-10 team </option>
+                          <option value="2"> 10-50 team </option>
+                          <option value="3"> 50-500 team </option>
+                          <option value="3"> +500 team </option></select></p>
+
+      </div>
+      <%= link_to reqs_path do %>
+          <button id="start" style="margin-top: 130px; background-color: #F0F0F1; color:#090131;">Start sourcing abroad 🌎</button>
+      <% end %>
+
+  </div>
+        <div class="col-2" style="background-color: #090131; z-index: 1">
+        <%= render template: "reqs/show" %>
+      </div>
+      <div class="col-10" id= "map-biz">
+        <%= cl_image_tag("g10_obwvyw", width: 1050, height: 626, id: "one") %>
+        <%= cl_image_tag("g14_sag6og", width: 1050, height: 626, id: "second-map") %>
+
+        <%= cl_image_tag("Group_106_vxgww5", width: 40, height: 40, class: "maison") %>
+        <%= cl_image_tag("Group_107_tbfmam", width: 40, height: 40, id: "chill") %>
+        <div>
+
+        </div>
+
+      <div class="filters" id="filt">
+        <p style="font-size: 10px; margin-left: 30px">Timezone from HQ <select id="number_select">
+                          <option value="1"> Global 🌏 </option>
+                          <option value="2" id="two"> +/-2h </option>
+                          <option value="3" id="three"> +/-3h</option>
+                          <option value="4" id="foor"> +/-4h </option>
+                          <option value="5" id="five"> +/-5h </option></select><br>
+                        <span>📍San Francisco</span></p>
+      </div>
+      <div class="countries">
+        <div id="country">Chile 🇨🇱</div>
+        <div id="country1">Argentina 🔒</div>
+        <div id="country1">Brasil 🔒</div>
+        <div id="country1">Colombia 🔒</div>
+        <div id="country1">Mexico 🔒</div>
+        <div id="country1">Canada 🔒</div>
+    </div>
+
+
+
+      </div>
+</div>
+</body>
 
 <style>
 
-.intput p {
-  color: black;
+h5 {
+  margin-top: 30px;
 }
 
-.center {
+#agnosticcc {
+  margin-left: 0px;
+  margin-left: 0px;
+}
+
+#second-map {
+  display: none;
+}
+
+.maison {
+  position: absolute;
+  margin-right: 63%;
+  margin-bottom: 5%;
+}
+
+#chill {
+  display: none;
+  position: absolute;
+  margin-right: 40%;
+  margin-bottom: -30%;
+}
+
+.filters {
+  position: absolute;
+  margin-bottom: 60%;
+  margin-right: 50%;
+}
+
+#defaultCheck1 {
+  color: 090131;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 10px;
+    margin-left: 30px;
+
+}
+
+label {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 10px;
+    color: #090131;
+}
+
+.agnosticc {
+  display: flex;
+  justify-content: flex-start;
+}
+
+select {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 10px;
+    color: #777581;
+}
+
+.countries {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 62%;
+  margin-left: 20%;
+}
+
+#country {
+  margin-left: 20px;
+  font-size: 10px;
+  color: #090131;;
+  padding: 6px;
+  border-radius: 3px;
+  background-color:white;
+  width: 80px;
+
+}
+
+
+#country1 {
+  margin-left: 20px;
+  font-size: 10px;
+  color: #090131;;
+  padding: 6px;
+  border-radius: 3px;
+  background-color:#F0F0F1;
+  width: 80px;
+
+}
+
+#connecc {
+  margin-left: 30px;
+  font-size: 10px;
+  color: #777581;
+  padding: 6px;
+  border-radius: 3px;
+  background-color:#F0F0F1;
+  width: 120px;
+}
+
+#connecc:hover {
+  background-color:#4175FE;
+  color: #F0F0F1;
+  cursor: pointer;
+}
+
+
+input {
+  text-decoration: none;
+}
+
+.language_select {
+    text-decoration: underline;
+}
+
+#title {
+  font-size: 20px;
+  background-color: white;
+  height: 50px;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+#slidebar {
+    position: absolute;
+    padding-left: 15px;
+    height: 100%;
+    width: 28%;
+    margin:none;
+    background-color: #FFFFFF;
+    float:left;
+    z-index: 2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+
+
+    animation-duration: 1s;
+    animation-name: slidein;
+}
+
+
+
+@keyframes slidein {
+    from {
+        margin-left: -150%;
+    }
+    to {
+        margin-left: -3%;
+    }
+}
+
+
+#total {
+  overflow: hidden;
+}
+
+
+.met {
+  margin-top: 10px;
+}
+
+.title p {
+  color:  #777581;
+  font-size: 12px;
+  margin-top: -17px;
+}
+
+.metricc {
+  padding-left: 30px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  background-color: white;
+  width: 420px;
+  height: 63px;
+  border-radius: 10px;
+  margin-right: 58%;
+  margin-bottom: 60%;
+}
+
+.show {
+  display: block;
+}
+
+h6 {
+  color: #090131;
+}
+
+span {
+  color: #777581;
+}
+
+
+
+.hide {
+  display: none;
+}
+
+.prfo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.list {
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.list p {
+  font-size: 9px;
+}
+
+.notif {
+  position: absolute;
+  background-color: #F49B9B;
+  border-radius: 200px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  cursor: pointer;
+}
+
+.notif2 {
+  position: absolute;
+  background-color:#777581;
+  border-radius: 200px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  cursor: pointer;
+}
+
+.notif2 p{
+  color: white;
+  font-size: 9px;
+  margin: 0px;
+}
+
+.notif:hover {
+  background-color: #4175FE;
+  transform: scale(1.5);
+}
+
+.notif2:hover {
+  transform: scale(1.5);
+}
+
+.notif p {
+  color: white;
+  font-size: 9px;
+  margin: 0px;
+}
+
+#map-biz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.row {
+  height: 100vh;
+}
+
+.alert {
+  text-align: center;
+  margin-right: 450px;
+  margin-bottom: 700px;
+}
+
+.alert p {
+  font-size: 10px;
+}
+
+.mod-footer {
+  margin-top: 10px;
   text-align: center;
 }
 
- .form-actions {
-  text-align: center;
- }
 
+.mod-title {
+  text-align: center;
+}
+
+textarea {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 150px;
+  background-color: #F0F0F1;
+}
+
+#text2 {
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 60px;
+  background-color: #F0F0F1;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.modal p {
+  font-size: 10px;
+}
+
+p {
+  color: #090131;
+}
+
+h5 {
+  color: #090131;
+}
+
+.blue {
+  background-color: #4175FE;
+}
+
+.blue2 {
+  background-color: #4175FE !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.job-desc {
+  margin-left: 10px;
+  line-height: 5px;
+}
+
+.former-job {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+.staks {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stack {
+  margin-top: 5px;
+  margin-left: 6px;
+  background-color: #090131;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  p {
+    font-size: 10px;
+    color: white;
+  }
+}
+
+small {
+  color: #777581;
+  font-size: 8px;
+  margin-left: 0px !important;
+}
+
+
+.team-overlap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.loca {
+  margin-left: 15px;
+}
+
+.tab-pane p {
+  font-size: 10px
+}
+
+.tab-pane {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+#pills-location p {
+  line-height: 9px;
+}
+
+
+.profile-nav {
+  font-size: 10px;
+  margin-top: 15px;
+  margin-bottom: 0px ;
+  padding-left: 10px;
+}
+
+#pills-contact-tab {
+  margin-right: 0px;
+}
+
+.choices {
+  padding-left: 25px;
+}
 
 .choice {
   color: white;
   padding: 10px;
   background-color: #4175FE;
   border-radius: 5px;
+  font-size: 10px;
   margin-right: 10px;
-  border: none;
-  margin-bottom: 20px;
 }
 
 .choice:hover {
@@ -39,16 +596,62 @@
   text-decoration: none;
 }
 
-  .login {
-    width: 800px;
+#dis {
+  background-color: #F0F0F1;
+  color: #090131;
+}
 
-  }
+#dis:hover{
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
 
-  body {
-    background-color: #090131;
-    display: flex;
-    justify-content: center;
-    padding-top: 80px;
-  }
+.info-pro p {
+  font-size: 12px;
+  margin-bottom: 9px !important;
+  color: #777581;
+}
+
+#loc {
+  color: #090131;
+}
+
+.info-pro h5 {
+  font-size: 20px;
+  color: #090131;
+}
+
+.id-info {
+  margin-left: 10px;
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
 
 </style>
+
+<script>
+  const move = document.getElementById("filt");
+  const two = document.getElementById("second-map");
+  const one = document.getElementById("one");
+  const country = document.getElementById("country");
+  const start = document.getElementById("start");
+  const chill = document.getElementById("chill");
+  move.addEventListener("change", (event) => {
+    one.classList.toggle("hide");
+    two.classList.toggle("show");
+    chill.classList.toggle("show");
+    country.classList.toggle("blue2");
+    start.classList.toggle("blue2");
+  });
+
+
+</script>
+
+

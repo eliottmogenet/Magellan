@@ -1,0 +1,496 @@
+
+<body>
+  <div class="row" id="total">
+
+      <div class="col-2" style="background-color: #090131">
+        <%= render template: "reqs/show" %>
+      </div>
+
+
+      <div class="col-10" id= "map-biz">
+      <div class="metricc">
+
+
+              <div id="selecto" style="margin-top: 5px">
+                   <p style="font-size: 10px;">Filter by <br> <select id="number_select">
+                          <option value="1"> Total </option>
+                          <option value="2"> This week </option>
+                          <option value="3"> This month </option>
+                          <option value="3"> This quarter </option></select></p>
+              </div>
+
+        <div class="row" id="colora" style="margin-left: 20px">
+          <div class=col-2 id="color">
+          <div ><p><span style="font-size:20px; font-weight:700; color: #F49B9B">5</span><p></div>
+          <div class="title"><p style="color:#F49B9B">New</p></div>
+        </div>
+        <div class="col-3" id="color">
+          <div id="color"><p><span style="font-size:20px; font-weight:700;">134 </span><span style="color: #3CBEB1; font-size: 6px; margin-bottom: 10px;">+17%</span><p></div>
+          <div class="title"><p>Reviewed</p></div>
+        </div>
+        <div class="col-3" id="color">
+          <div><p><span style="font-size:20px; font-weight:700;"> 40 </span><span style="color: #3CBEB1; font-size: 6px; margin-bottom: 10px;">+15%</span><p></div>
+          <div class="title"><p>Contacted</p></div>
+        </div>
+        <div class="col-4" id="colori">
+          <div><p><span style="font-size:20px; font-weight:700;">14</span><span style="color: #3CBEB1; font-size: 6px; margin-bottom: 10px;">+30%</span><p></div>
+          <div class="title"><p>In process</p></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3">
+          <div><p><span style="font-size:20px; font-weight:700; color: #090131">24</span><span style="color: #3CBEB1; font-size: 6px; margin-bottom: 10px;">+30%</span><p></div>
+          <div class="title"><p>Diversity</p></div>
+        </div>
+      </div>
+    </div>
+        <%= cl_image_tag("g10_obwvyw", width: 1050, height: 626) %>
+         <%= cl_image_tag("Group_106_vxgww5", width: 40, height: 40, class: "maison") %>
+        <div class="notif" id="notif-chile" style="margin-left: -490px; margin-top: 320px">
+          <p><%= Matching.count %></p>
+        </div>
+        <div class="notif2" id="notif-argentina" style="margin-left: -340px; margin-top: 420px">
+          <p>3</p>
+        </div>
+          <div class="list hide" id="list-chile" style="margin-left: -350px; margin-top: -20px">
+            <h6>Chile 🇨🇱 </h6>
+            <hr>
+            <% @customer_reqs.each do |req| %>
+              <% req.matchings.each do |match| %>
+                <% if match.user.city == "Santiago 🇨🇱" %>
+                  <div class="prfo">
+                    <div>
+                       <%= cl_image_tag match.user.photo.key, width: 30, height: 30 %>
+                    </div>
+                    <div style="margin-left: 10px">
+                      <p><%= match.user.first_name + " " + match.user.last_name %><br><span><%= match.user.job %></span></p>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="list hide" id="list-argenina" style="margin-left: -200px; margin-top: 90px">
+            <h6>Argentina 🇦🇷 </h6>
+            <hr>
+            <div class="prfo">
+                <div>
+                  <%= cl_image_tag("Group_103_i1o7aj", width: 30, height: 30) %>
+                </div>
+                <div style="margin-left: 10px">
+                  <p><span style="filter: blur(4px);">Sebastian unknown</span><br><span> +4 years Ruby </span></p>
+                </div>
+              </div>
+            <div class="prfo">
+                <div>
+                  <%= cl_image_tag("Group_104_cewj0e", width: 30, height: 30) %>
+                </div>
+                <div style="margin-left: 10px">
+                  <p><span style="filter: blur(4px);">Sebastian unknown</span><br><span> +6 years Python </span></p>
+                </div>
+              </div>
+            <div class="prfo">
+                <div>
+                  <%= cl_image_tag("Group_105_ivf6vn", width: 30, height: 30) %>
+                </div>
+                <div style="margin-left: 10px">
+                  <p><span style="filter: blur(4px);">Sebastian unknown</span><br><span> +8 years Java </span></p>
+                </div>
+              </div>
+             <div><p id="connecc">Unlock Argentina 🔓</p></div>
+          </div>
+      </div>
+  </div>
+</body>
+
+<style>
+
+#connecc {
+  margin-top: 10px;
+  margin-bottom: -5px;
+  font-size: 10px;
+  color: white;
+  padding: 6px;
+  border-radius: 3px;
+  background-color:#4175FE;
+  width: 120px;
+}
+
+
+#selecto {
+}
+
+#color span:hover {
+  color: #F49B9B !important;
+  cursor: pointer;
+}
+
+#color p:hover{
+  color: #F49B9B !important;
+  cursor: pointer;
+}
+
+
+#colori span:hover {
+  color: #F49B9B !important;
+  cursor: pointer;
+}
+
+#colora span {
+  color: #090131;
+}
+
+
+.maison {
+  position: absolute;
+  margin-right: 63%;
+  margin-bottom: 5%;
+}
+
+
+#total {
+  overflow: hidden;
+}
+
+
+.met {
+  margin-top: 10px;
+}
+
+.title p {
+  color:  #777581;
+  font-size: 12px;
+  margin-top: -17px;
+}
+
+.metricc {
+  padding-left: 30px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  background-color: white;
+  width: 540px;
+  height: 63px;
+  border-radius: 10px;
+  margin-right: 45%;
+  margin-bottom: 60%;
+}
+
+.show {
+  display: block;
+}
+
+h6 {
+  color: #090131;
+}
+
+span {
+  color: #777581;
+}
+
+
+select {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 10px;
+    color: #777581;
+    margin-left: -5px;
+}
+
+
+.hide {
+  display: none;
+}
+
+.prfo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.list {
+    position: absolute;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.list p {
+  font-size: 9px;
+}
+
+.notif {
+  position: absolute;
+  background-color: #F49B9B;
+  border-radius: 200px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  cursor: pointer;
+}
+
+.notif2 {
+  position: absolute;
+  background-color:#777581;
+  border-radius: 200px;
+  color: white;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  padding: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+  cursor: pointer;
+}
+
+.notif2 p{
+  color: white;
+  font-size: 9px;
+  margin: 0px;
+}
+
+.notif:hover {
+  background-color: #4175FE;
+  transform: scale(1.5);
+}
+
+.notif2:hover {
+  transform: scale(1.5);
+}
+
+.notif p {
+  color: white;
+  font-size: 9px;
+  margin: 0px;
+}
+
+#map-biz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.row {
+  height: 100vh;
+}
+
+.alert {
+  text-align: center;
+  margin-right: 450px;
+  margin-bottom: 700px;
+}
+
+.alert p {
+  font-size: 10px;
+}
+
+.mod-footer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.mod-title {
+  text-align: center;
+}
+
+textarea {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 150px;
+  background-color: #F0F0F1;
+}
+
+#text2 {
+  border: none;
+  outline: none;
+  font-size: 10px;
+  width: 98%;
+  height: 60px;
+  background-color: #F0F0F1;
+}
+
+.modal-content {
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+
+}
+
+.modal p {
+  font-size: 10px;
+}
+
+p {
+  color: #090131;
+}
+
+h5 {
+  color: #090131;
+}
+
+.blue {
+  background-color: #4175FE;
+}
+
+.job-desc {
+  margin-left: 10px;
+  line-height: 5px;
+}
+
+.former-job {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+
+.staks {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.stack {
+  margin-top: 5px;
+  margin-left: 6px;
+  background-color: #090131;
+  display: block;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 10px;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  p {
+    font-size: 10px;
+    color: white;
+  }
+}
+
+small {
+  color: #777581;
+  font-size: 8px;
+  margin-left: 0px !important;
+}
+
+
+.team-overlap {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.loca {
+  margin-left: 15px;
+}
+
+.tab-pane p {
+  font-size: 10px
+}
+
+.tab-pane {
+  padding-right: 20px;
+  padding-left: 10px;
+}
+
+#pills-location p {
+  line-height: 9px;
+}
+
+
+.profile-nav {
+  font-size: 10px;
+  margin-top: 15px;
+  margin-bottom: 0px ;
+  padding-left: 10px;
+}
+
+#pills-contact-tab {
+  margin-right: 0px;
+}
+
+.choices {
+  padding-left: 25px;
+}
+
+.choice {
+  color: white;
+  padding: 10px;
+  background-color: #4175FE;
+  border-radius: 5px;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.choice:hover {
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+#dis {
+  background-color: #F0F0F1;
+  color: #090131;
+}
+
+#dis:hover{
+  background-color: blue;
+  color: white;
+  text-decoration: none;
+}
+
+.info-pro p {
+  font-size: 12px;
+  margin-bottom: 9px !important;
+  color: #777581;
+}
+
+#loc {
+  color: #090131;
+}
+
+.info-pro h5 {
+  font-size: 20px;
+  color: #090131;
+}
+
+.id-info {
+  margin-left: 10px;
+}
+
+.show {
+  display: block i !important;
+}
+
+</style>
+
+<script>
+
+var l = document.getElementById("list-chile");
+
+const n = document.getElementById("notif-chile");
+n.addEventListener("click", (event) => {
+  l.classList.toggle("hide");
+  n.classList.toggle("blue")
+});
+
+var a = document.getElementById("list-argenina");
+
+const no = document.getElementById("notif-argentina");
+no.addEventListener("click", (event) => {
+  a.classList.toggle("hide");
+});
+</script>
+

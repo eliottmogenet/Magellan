@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_212553) do
+ActiveRecord::Schema.define(version: 2021_11_14_190621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 2021_11_08_212553) do
     t.text "employer_backend_stack"
     t.text "employer_frontend_stack"
     t.text "tools"
+    t.string "team_size"
+    t.string "eng_team_size"
+    t.string "last_funding_amount"
+    t.boolean "small_team_xp", default: false
+    t.boolean "scale_up_xp", default: false
+    t.boolean "us_company_xp", default: false
+    t.boolean "b2c", default: false
+    t.boolean "smb_customers", default: false
+    t.boolean "entreprise_customers", default: false
+    t.boolean "employed_more_than_one_year"
   end
 
   create_table "experience_comments", force: :cascade do |t|
@@ -108,17 +118,10 @@ ActiveRecord::Schema.define(version: 2021_11_08_212553) do
     t.text "description"
     t.string "started_at"
     t.string "end_at"
-    t.string "team_size"
     t.string "fundraising"
     t.boolean "employed_more_than_one_year"
-    t.boolean "us_company_xp"
-    t.boolean "b2c"
-    t.boolean "smb_customers"
-    t.boolean "entreprise_customers"
-    t.boolean "microservices"
-    t.boolean "high_volume_data"
-    t.boolean "small_team_xp"
-    t.boolean "scale_up_xp"
+    t.boolean "microservices", default: false
+    t.boolean "high_volume_data", default: false
     t.index ["employer_id"], name: "index_previous_experiences_on_employer_id"
     t.index ["user_id"], name: "index_previous_experiences_on_user_id"
   end
@@ -188,7 +191,6 @@ ActiveRecord::Schema.define(version: 2021_11_08_212553) do
     t.boolean "tech_recruiter"
     t.string "job"
     t.string "citizenship"
-    t.integer "expected_wage"
     t.string "timezone"
     t.string "city"
     t.string "status"
@@ -203,6 +205,10 @@ ActiveRecord::Schema.define(version: 2021_11_08_212553) do
     t.string "next_jobs"
     t.string "area_median_wage"
     t.text "competitive_profile"
+    t.integer "total_years_xp"
+    t.string "expected_wage"
+    t.boolean "employed_more_than_one_year"
+    t.string "user_type"
     t.index ["country_id"], name: "index_users_on_country_id"
     t.index ["customer_id"], name: "index_users_on_customer_id"
     t.index ["email"], name: "index_users_on_email", unique: true

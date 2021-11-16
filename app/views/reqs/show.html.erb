@@ -23,11 +23,16 @@
                     </li>
                     <% end %>
                   </ul>
-
             </div>
               </div>
           </div>
-              <div style="margin-top: 35px;">
+          <div class="req_header" >
+
+          <%= link_to new_req_path do %>
+              <button>+ Open new Req</button>
+          <% end %>
+      </div>
+              <div style="margin-top: 15px;">
         <div class="candidate_nav" style="margin-left: 10px;">
         <ul class="nav">
         <li class="nav-item">
@@ -37,10 +42,15 @@
     </div>
     <%= cl_image_tag("Line_1_nwlm9y",
           width: 200, height: 1, style: 'margin-left: 20px;') %>
+    <%= link_to reqs_path do %>
+    <div class="req_box1 <%= ' blanc' if @req == nil %>" >
+        <p><i class="fas fa-user fa-fw"></i>All open positions </p>
+    </div>
+    <% end %>
         <% @customer.reqs.each do |req| %>
 
       <% if req.users.where(:matchings => {:status => "available" }).any? %>
-        <%= link_to req_user_path(req, req.users.where(:matchings => {:status => "available" }).first) do %>
+        <%= link_to req_users_path(req, req.users.where(:matchings => {:status => "available" })) do %>
             <div class="req_box1 <%= ' blanc' if req == @req %>">
               <p><i class="fas fa-user fa-fw"></i><%= req.title %></p>
             </div>

@@ -1,6 +1,5 @@
 
 
-
 <div class="propro">
   <div class="id-info">
     <div class="profile-info">
@@ -13,7 +12,7 @@
                   </div>
                 <div class="info-pro">
                     <h5><%= @user.first_name + " " + @user.last_name %></h5>
-                    <p><%= @user.job %> </p>
+                    <p><%= @user.job %> <%= @user.competitive_profile %></p>
                     <p id="loc"><%= @user.city + " "%>
                   <% if @user.github_profile != nil %>
                     <%= link_to @user.github_profile, target: :_blank do %>
@@ -33,11 +32,11 @@
   <div class="choices">
     <div>
       <% if @match.status == "messaged"  %>
-        <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
-          Message sent <i class="fas fa-check"></i>
+        <button1 type="button" class="choice" data-toggle="modal" data-target="#myModal">
+          Email sent <i class="fas fa-check"></i>
         </button1>
       <% else %>
-        <button1 type="button" class="choice" data-toggle="modal" data-target="#exampleModalCenter">
+        <button1 type="button" class="choice" data-toggle="modal" data-target="#myModal">
           Send email <i class="fas fa-paper-plane"></i>
         </button1>
       <% end %>
@@ -86,12 +85,33 @@
       <div class="loca">
         <h5 style="font-size: 15px;">Current experience</h5>
 
+      <% if @user.employed_more_than_one_year == true  %>
+            <div class="comment1">
+              <p>Employed > 12 months</p>
+            </div>
+          <% end %>
 
       <% if @user.previous_experiences.empty? %>
 
       <% else %>
 
-                <p style="width: 310px; text-align: justify;"><%= @user.previous_experiences.first.description %> </p>
+                <p style="width: 310px; text-align: justify;"> At <%= @user.previous_experiences.first.employer.name %>, <%= @user.first_name %> is working in a team of <%= @user.previous_experiences.first.employer.eng_team_size %> engineers. In charge of
+
+          <% if @user.user_type == "Backend" %>
+
+            the backend in <%= @user.previous_experiences.first.employer.employer_backend_stack %>.<p>
+
+          <% elsif @user.user_type == "Frontend" %>
+
+            the frontend in <%= @user.previous_experiences.first.employer.employer_frontend_stack %>.<p>
+
+          <% else %>
+
+             the backend in <%= @user.previous_experiences.first.employer.employer_backend_stack %> and the frontend in <%= @user.previous_experiences.first.employer.employer_frontend_stack %>.<p>
+
+          <% end %>
+
+
         <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= @user.previous_experiences.first.id %>">
             Learn more about <%= @user.previous_experiences.first.employer.name %> >
         </a>
@@ -124,12 +144,12 @@
                       <p style="color: grey;  line-height: 0px"><%= @user.previous_experiences.first.started_at %> - <%= @user.previous_experiences.first.end_at %></p>
                     </div>
                     <div style="margin-left: 30px">
-                      <p><b>Fundraisings 💸 </b></p>
-                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.fundraising %></p>
+                      <p><b>Last fundraising 💸 </b></p>
+                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.employer.last_funding_amount %></p>
                     </div>
                     <div style="margin-left: 30px">
                       <p><b>Company size 👥 </b></p>
-                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.team_size %></p>
+                      <p style="color: grey; line-height: 0px"><%= @user.previous_experiences.first.employer.team_size %></p>
                     </div>
                   </div>
                   <hr>
@@ -144,10 +164,54 @@
     <div>
       <h5 style="font-size: 15px;">Previous companies </h5>
 
+      <% @user.previous_experiences.each do |experience| %>
+
+      <div class="resume">
+        <% if experience.employer.small_team_xp == true  %>
+          <div class="comment2">
+            <p>Start-up XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.employer.scale_up_xp == true  %>
+          <div class="comment2">
+            <p>Scale-up XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.employer.us_company_xp == true  %>
+          <div class="comment3">
+            <p>US Company XP</p>
+          </div>
+        <% end %>
+
+        <% if experience.employer.b2c == true  %>
+          <div class="comment3">
+            <p>B2C Customers</p>
+          </div>
+        <% end %>
+
+        <% if experience.employer.smb_customers == true  %>
+          <div class="comment3">
+            <p>SMB Customers</p>
+          </div>
+        <% end %>
+
+        <% if experience.employer.entreprise_customers == true  %>
+          <div class="comment1">
+            <p>Entreprise customers</p>
+          </div>
+        <% end %>
+
+
+      </div>
+    <% end %>
 
 
 
-      <% @user.previous_experiences.drop(1).each do |experience| %>
+
+
+      <% @user.previous_experiences.each do |experience| %>
 
          <a href="#" style="font-size: 10px"data-toggle="modal" data-target="#modal-<%= experience.id %>">
           <%= cl_image_tag experience.employer.logo.key, width: 40, height: 40, style: 'margin-left: 10px;' %>
@@ -182,11 +246,11 @@
                     </div>
                     <div style="margin-left: 30px">
                       <p><b>Fundraisings 💸 </b></p>
-                      <p style="color: grey; line-height: 0px"><%= experience.fundraising %></p>
+                      <p style="color: grey; line-height: 0px"><%= experience.employer.last_funding_amount %></p>
                     </div>
                     <div style="margin-left: 30px">
                       <p><b>Company size 👥 </b></p>
-                      <p style="color: grey; line-height: 0px"><%= experience.team_size %></p>
+                      <p style="color: grey; line-height: 0px"><%= experience.employer.team_size %></p>
                     </div>
                   </div>
                   <hr>
@@ -200,7 +264,7 @@
     </div>
     <div class="loca">
       <h5 style="font-size: 15px;">Architecture</h5>
-
+        <p><%= @user.previous_experiences.first.employer.architecture %></p>
 
     </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
@@ -208,17 +272,11 @@
 
     <div class="loca">
       <h5 style="font-size: 15px;">DevOps & Team</h5>
-            <% @user.previous_experiences.each do |experience| %>
-            <% end %>
-
+      <p><%= @user.previous_experiences.first.employer.dev_ops %></p>
 
     </div>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px;') %>
 
-    <div class="loca">
-      <h5 style="font-size: 15px;">University</h5>
-      <p><%= @user.university %>
-    </div>
     <div class="loca">
       <h5 style="font-size: 15px;">Languages  </h5>
         <% @user.user_speaking_languages.each do |user_language| %>
@@ -255,9 +313,9 @@
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Compensation for this profile</h5>
-        <p>💵 Expected : <b> US$ <%= @user.expected_wage %> K </b></p>
-        <p>📏 Area median : US$ <%= @user.area_median_wage %> K </p>
-        <p>🗓 Notice period : <%= @country.notice_period %> </p>
+        <p>📏 Area median : US <%= @user.area_median_wage %> </p>
+        <p>💵 Expected : <b> US $60,000 </b></p>
+        <p>🗓 Notice period : 2 weeks </p>
       </div>
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
        <div class="loca">
@@ -267,8 +325,8 @@
         <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       <div class="loca">
         <h5 style="font-size: 15px">Benefits</h5>
-        <p>🚑  <%= @country.healthcare %></p>
-        <p>👴 <%= @country.other_benefits %></p>
+        <p>🚑  Healthcare: Private healthcare plans range from $70-$250 USD per month </p>
+        <p>👴 PTO: 15 days of paid leave </p>
       <%= cl_image_tag("Line_6_u4e9nl", width: 280, style: 'margin-left: 15px') %>
       </div>
     </div>
@@ -276,36 +334,60 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="mod-title">
-        <h5 class="modal-title" id="exampleModalLongTitle">Send an email <br> to <%= @user.first_name + " " + @user.last_name  %> </h5>
-          <p>Send a personnal email to <%= @user.first_name %>.</p>
+  <!-- Modal -->
+  <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+        <div class="tit">
+
+        <h5 class="modal-title" id="exampleModalLongTitle">Send a message to <%= @user.first_name%>
         <% if @user.photo.attached? %>
-            <div style="margin-top: 5px">
-              <%= cl_image_tag @user.photo.key, height: 35, width: 35 %>
-            </div>
-        <% end  %>
+              <%= cl_image_tag @user.photo.key, height: 30, width: 30 %>
+        <% end  %></h5>
+      </div>
+      <div>
+        <p>Custom advice to include for emailing <%= @user.first_name%>.</p>
+        <div class="advicce">
+          <div><p id="connecc">US-based 🇺🇸</p></div>
+          <div><p id="connecc" style="width: 78px">Scale up 🚀</p></div>
+          <div><p id="connecc" style="width: 92px">+25% salary 💸</p></div>
+          <div><p id="connecc" style="width: 120px">API infrastructure 🔌</p></div>
+        </div>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @match, url: req_user_path(@req, @user) do |f| %>
-          <%= f.input :message_content, :placeholder => "Type a relevant message to the talent", :input_html => {:rows => 10}, label: false %>
-          <hr>
-          <%= f.input :rate,
-          :label => "How much is the talent relevant according to you ? (1-5)" %>
-          <%= f.input :comment,
-          :label => "Feedback for Magellan team (private)",
-          :input_html => {:rows => 6} %>
-        <%= f.button :submit, 'Start conversation', class:"choice", 'data-toggle': "collapse", 'data-target': "#alert-success" %>
-      <% end %>
-      <button1 type="button" class="choice" id='dis' data-dismiss="modal" style="margin-top: 10px">Cancel </button1>
-
-      </div>
-    </div>
+<div class="profile-nav" style="margin-left: -40px">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-contact-tab" data-toggle="pill" href="#pills-email" role="tab" aria-controls="pills-profile" aria-selected="false">Email</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-gem" role="tab" aria-controls="pills-home" aria-selected="true">Gem (soon)</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-linkedin" role="tab" aria-controls="pills-home" aria-selected="true">LinkedIn (soon)</a>
+    </li>
+  </ul>
   </div>
-</div>
+  <hr style="margin-left: -20px">
+  <p style="margin-left: -20px"><span>From :</span> eliott@getmagellan.com</p>
+  <hr style="margin-left: -20px">
+  <p style="margin-left: -20px"><span> Subject:</span><input type="text" style="width: 300px" placeholder=""></p>
+  <hr style="margin-left: -20px">
+    <%= simple_form_for @match, url: req_user_path(@req, @user) do |f| %>
+          <%= f.input :message_content, :placeholder => "Write your email message", :input_html => {:rows => 20}, label: false, style: "margin-left: -20px" %>
+          <hr>
+       <%= f.button :submit, 'Send email', class:"choice", 'data-toggle': "collapse", 'data-target': "#alert-success", style: "margin-left: -20px"%>
+      <% end %>
+      <button1 type="button" class="choice" id='dis' data-dismiss="modal" style="margin-top: 10px; margin-left: -20px">Cancel </button1>
+      </div>
+
+
+      </div><!-- modal-content -->
+    </div><!-- modal-dialog -->
+  </div><!-- modal -->
+
+
 
 <div class="flash flash-success alert alert-dismissible fade" role="alert" id="alert-success">
   <span><%= @user.last_name %> has been messaged </span>
@@ -317,6 +399,99 @@
 
 
 <style>
+
+textarea {
+  margin-left: -20px;
+
+}
+
+#matching_message_content {
+  background-color: #EEEEEE;
+  border: none;
+  outline: none;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: 10px;
+
+}
+
+
+
+span {
+  color: #777581;
+}
+
+.advicce {
+  display: flex;
+  justify-content: flex-start;
+}
+
+#connecc {
+  margin-right: 10px;
+  font-size: 10px;
+  color: #777581;
+  padding: 6px;
+  border-radius: 3px;
+  background-color:#F0F0F1;
+  width: 80px;
+}
+
+.tit {
+  display: flex;
+  justify-content: flex-start;
+}
+
+  .modal.left .modal-dialog,
+  .modal.right .modal-dialog {
+    position: fixed;
+    margin: auto;
+    width: 800px;
+    height: 100%;
+    -webkit-transform: translate3d(0%, 0, 0);
+        -ms-transform: translate3d(0%, 0, 0);
+         -o-transform: translate3d(0%, 0, 0);
+            transform: translate3d(0%, 0, 0);
+  }
+
+  .modal.left .modal-content,
+  .modal.right .modal-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .modal.left .modal-body,
+  .modal.right .modal-body {
+    padding: 15px 15px 80px;
+  }
+
+/*Left*/
+  .modal.left.fade .modal-dialog{
+    left: 0px;
+    -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+       -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+         -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+            transition: opacity 0.3s linear, left 0.3s ease-out;
+  }
+
+  .modal.left.fade.in .modal-dialog{
+    left: 0;
+  }
+
+  /* ----- MODAL STYLE ----- */
+  .modal-content {
+    border-radius: 0px !important;
+    border: none;
+  }
+
+  .modal-header {
+    border-bottom-color: #EEEEEE;
+    background-color: #FAFAFA;
+  }
 
 .resume {
   display: flex;
